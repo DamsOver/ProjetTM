@@ -8,7 +8,10 @@
 </head>
 <body>
 
-    <a href="HTML/login.html">login</a>
+    <!--<a href="HTML/login.html">login</a>-->
+    <?php
+    include('HTML/login.html');
+    ?>
     <h3>Hello World !</h3>
 
 </body>
