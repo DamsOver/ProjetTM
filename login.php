@@ -13,11 +13,16 @@
 </head>
 <body>
 
-
     <?php
       include("php/navbar.php");
     ?>
 
+    <form class="box" action="#" method="post">
+    <h1>Login</h1>
+    <input type="text" name="" placeholder="Nom d'utilisateur">
+    <input type="password" name="" placeholder="Mot de passe">
+    <input type="submit" name="" value="Login">
+    </form>
 
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="js/jquery-3.4.1.slim.min.js" crossorigin="anonymous"></script>

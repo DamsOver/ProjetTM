@@ -6,7 +6,7 @@ body{
 }
 
 .box{
-    width: 300px;
+    width: 400px;
     padding: 40px;
     position: absolute;
     top: 50%;
@@ -60,3 +60,17 @@ body{
 .box input[type = "submit"]:hover{
     background: #2ecc71;
 }
+
+/* ============ desktop view ============ */
+@media all and (min-width: 992px) {
+	.navbar .nav-item .dropdown-menu{ display: none; }
+	.navbar .nav-item:hover .nav-link{   }
+	.navbar .nav-item:hover .dropdown-menu{ display: block; }
+	.navbar .nav-item .dropdown-menu{ margin-top:0; }
+}
+/* ============ desktop view .end// ============ */
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0;
+ }
