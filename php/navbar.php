@@ -50,7 +50,7 @@
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Inscription</a>
+                    <a class="nav-link" href="register.php">Inscription</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="login.php">Connexion</a>
