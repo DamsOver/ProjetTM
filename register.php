@@ -17,14 +17,47 @@
             include("php/navbar.php");
         ?>
 
-        <form class="box" action="#" method="post">
+        <?php
+            require('config.php');
+            if (isset($_REQUEST['user'], $_REQUEST['mail'], $_REQUEST['password'])){
+                // récupérer le nom d'utilisateur et supprimer les antislashes ajoutés par le formulaire
+                $username = stripslashes($_REQUEST['user']);
+                // récupérer l'email et supprimer les antislashes ajoutés par le formulaire
+                $email = stripslashes($_REQUEST['mail']);
+                // récupérer le mot de passe et supprimer les antislashes ajoutés par le formulaire
+                $password = stripslashes($_REQUEST['password']);
+                $password = password_hash($password, PASSWORD_DEFAULT);
+
+                //requéte SQL + mot de passe crypté
+
+                $requete = $conn->prepare("INSERT into `utilisateur` (pseudo, mail, motDePasse, role)
+                VALUES (:username, :email, :password, '1')");
+
+                $requete->bindValue(':username', $username, PDO::PARAM_STR);
+                $requete->bindValue(':email', $email, PDO::PARAM_STR);
+                $requete->bindValue(':password', $password, PDO::PARAM_STR);
+
+                $requete->execute();
+
+                if($conn != null){
+                    echo "<div class='success'>
+                    <h3>Vous êtes inscrit avec succès.</h3>
+                    <p>Cliquez ici pour vous <a href='login.php'>connecter</a></p>
+                    </div>";
+                }
+            }else{
+        ?>
+
+        <form class="box" action="" method="post">
             <h1>Inscription</h1>
-            <input type="text" name="" placeholder="Nom d'utilisateur">
-            <input type="text" name="" placeholder="Adresse e-mail">
-            <input type="password" name="" placeholder="Mot de passe">
-            <input type="password" name="" placeholder="Confirmer le mot de passe">
-            <input type="submit" name="" value="S'inscrire">
+            <input type="text" name="user" placeholder="Nom d'utilisateur">
+            <input type="text" name="mail" placeholder="Adresse e-mail">
+            <input type="password" name="password" placeholder="Mot de passe">
+            <input type="password" name="passwordCheck" placeholder="Confirmer le mot de passe">
+            <input type="submit" name="send" value="S'inscrire">
         </form>
+
+        <?php } ?>
 
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="js/jquery-3.4.1.slim.min.js" crossorigin="anonymous"></script>
