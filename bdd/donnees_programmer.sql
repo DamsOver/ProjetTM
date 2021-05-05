@@ -18,6 +18,6 @@ insert into commentaire(texte, dateajout, mail, idtopic) values ('Comment fo fai
 
 
 
-/*insert into likecom(mail, idcom) values ('cyber666@me.com','com#00000001');
-insert into likecom(mail, idcom) values ('dadanicolas@me.com','com#00000001');
-insert into likecom(mail, idcom) values ('cyber666@me.com','com#00000002');*/
+/*insert into likecom(mail, idcom) values ('damien@me.com','1');
+insert into likecom(mail, idcom) values ('martin@me.com','2');
+insert into likecom(mail, idcom) values ('florian@me.com','1');*/
