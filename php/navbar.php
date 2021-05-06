@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="index.php">Menu</a>
+        <a class="navbar-brand" href="index.php"><img src="logo.jpg" width="40" height="30" alt="Site logo">Menu</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent, #navbarconnection" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -88,16 +88,16 @@
                                 default:
                                     echo "error";
                             }
-                            ?>
+                            ?> :
                             </span>
 
                         </li>
 
-                        <li class="nav-item" > <span class="nav-link" style="color:white;"> : </span> </li>
+                        <!--<li class="nav-item" > <span class="nav-link" style="color:white;"> : </span> </li>-->
 
-                        <li class="nav-item"> <span class="nav-link" style="color:white;"><?php echo $_SESSION['username']; ?></span> </li>
+                        <li class="nav-item"> <span class="nav-link" style="color:white;"> <?php echo $_SESSION['username']; ?> | </span></li>
 
-                        <li class="nav-item" > <span class="nav-link" style="color:white;"> | </span> </li>
+                        <!--<li class="nav-item" > <span class="nav-link" style="color:white;"> | </span> </li>-->
 
                         <li class="nav-item">
                             <a class="nav-link" href="logout.php">Déconnexion</a>
