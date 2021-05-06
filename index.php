@@ -30,29 +30,7 @@
         <script src="js/popper.min.js" crossorigin="anonymous"></script>
         <script src="js/bootstrap.min.js" crossorigin="anonymous"></script>
 
-
-    <script>
-        $(document).ready(function(){
-
-            $.ajax({
-                url: 'php/getCategories.php',
-                dataType:'json',
-
-                success:function(response){
-                    ajax.parseJSON(response);
-                }
-            });
-
-        });
-
-        let ajax = {
-            parseJSON:function(response) {
-                for (let i = 0; i < response.length; i++) {
-                    $('#elts_cat').append("<li>"+ response[i].id +"</li>");
-                }
-            }
-        }
-
-    </script>
+        <!--Add Categories-->
+        <script src="js/addCategories.js" crossorigin="anonymous"></script>
     </body>
 </html>
