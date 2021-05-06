@@ -19,20 +19,20 @@ create table if not exists categorie (
 
 create table if not exists theme (
     nomtheme varchar(20) not null,
-    mail varchar(40) not null,
+    mailTheme varchar(40) not null,
     nomcat varchar(20) not null,
     primary key(nomtheme),
-    key(mail),
+    key(mailTheme),
     key(nomcat)
 )engine=innodb;
 
 create table if not exists topic (
     idtopic int not null auto_increment,
     nomtopic varchar(50) not null,
-    mail varchar(40) not null,
+    mailTopic varchar(40) not null,
     nomtheme varchar(20) not null,
     primary key(idtopic),
-    key(mail),
+    key(mailTopic),
     key(nomtheme)
 ) engine=innodb;
 
@@ -40,28 +40,28 @@ create table if not exists commentaire (
     idcom int not null auto_increment,
     texte varchar(280) not null,
     dateajout date not null,
-    mail varchar(40) not null,
+    mailCom varchar(40) not null,
     idtopic int not null,
     primary key(idcom),
-    key(mail),
+    key(mailCom),
     key(idtopic)
 ) engine=innodb;
 
 create table if not exists likecom (
-    mail varchar(40) not null,
+    mailLike varchar(40) not null,
     idcom int not null,
-    primary key(mail, idcom),
+    primary key(mailLike, idcom),
     key(idcom)
 ) engine=innodb;
 
-alter table theme add constraint fkthemeutilisateur foreign key(mail) references utilisateur(mail),
+alter table theme add constraint fkthemeutilisateur foreign key(mailTheme) references utilisateur(mail),
 add constraint fkthemecategorie foreign key(nomcat) references categorie(nomcat);
 
-alter table topic add constraint fktopicutilisateur foreign key(mail) references utilisateur(mail),
+alter table topic add constraint fktopicutilisateur foreign key(mailTopic) references utilisateur(mail),
 add constraint fktopictheme foreign key(nomtheme) references theme(nomtheme);
 
-alter table commentaire add constraint fkcommentaireutilisateur foreign key(mail) references utilisateur(mail),
+alter table commentaire add constraint fkcommentaireutilisateur foreign key(mailCom) references utilisateur(mail),
 add constraint fkcommentairetopic foreign key(idtopic) references topic(idtopic);
 
-alter table likecom add constraint likecomutilisateur foreign key(mail) references utilisateur(mail),
+alter table likecom add constraint likecomutilisateur foreign key(mailLike) references utilisateur(mail),
 add constraint likecomcommentaire foreign key(idcom) references commentaire(idcom);

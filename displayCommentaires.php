@@ -25,7 +25,9 @@ session_start();
 <section id ="mainSection">
     <div class ="grid-wrapper">
         <div class="titre h2 ml-1 pt-4 pl-4 pr-4">
-            Titre du topic bla bla bla bla bla
+            <?php
+            echo $_GET['gTopic'];
+            ?>
         </div>
         <nav aria-label="navigation">
             <ul class="pagination pl-4 ml-1">
@@ -40,35 +42,6 @@ session_start();
             <?php
             include("php/getCommentaires.php");
             ?>
-            <!--
-            <div class="single-comment">
-                <div class="row">
-                    <div class="col-2">
-                        <div class ="pl-3 pt-1 pr-3">user</div>
-                        <div class ="pl-3 pt-1 pr-3">profil Picture</div>
-                    </div>
-                    <div class="col-10">
-                        <div class ="pl-3 pt-1 pr-3">date</div>
-                        <div class ="pl-3 pt-1 pr-3">Commentaire d'un mec random qui veut juste se la péter en fait
-                            parce qu'il a fait un truc repsonsive qui lui a pris 100h alors que c'est de l'eau quoi mdr</div>
-                        <div></br></div>
-                    </div>
-                </div>
-            </div>
-            <div class="single-comment">
-                <div class="row">
-                    <div class="col-2">
-                        <div class ="pl-3 pt-1 pr-3">user</div>
-                        <div class ="pl-3 pt-1 pr-3">profil Picture</div>
-                    </div>
-                    <div class="col-10">
-                        <div class ="pl-3 pt-1 pr-3">date</div>
-                        <div class ="pl-3 pt-1 pr-3">Commentaire d'un mec random qui veut juste se la péter en fait
-                            parce qu'il a fait un truc repsonsive qui lui a pris 100h alors que c'est de l'eau quoi mdr</div>
-                        <div></br></div>
-                    </div>
-                </div>
-            </div>-->
         </div>
         <nav aria-label="navigation">
             <ul class="pagination pl-4 ml-1">

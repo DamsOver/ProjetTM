@@ -1,7 +1,7 @@
 <?php
 include("php/config.php");
 $topic = $_GET['gTopic'];
-$req1 = $conn->prepare("select commentaire.texte,commentaire.dateajout,utilisateur.pseudo from commentaire left join topic using(idtopic) left join utilisateur on commentaire.mailcom=utilisateur.mail where nomtopic ='$topic' order by dateajout");
+$req1 = $conn->prepare("select commentaire.texte,commentaire.dateajout,utilisateur.pseudo from commentaire where nomtopic ='$topic' order by dateajout");
 $req1 -> execute();
 
 
