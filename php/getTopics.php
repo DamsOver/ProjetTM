@@ -4,19 +4,19 @@
     $req1 = $conn->prepare("select nomtopic from topic where nomtheme ='$theme'");
     $req1 -> execute();
 
-    $select = '<div class=\"container\">';
+    $select = '<ul  class="list-group">';
 
     if($req1 -> rowCount() > 0){
         while($data1 = $req1 -> fetch(PDO::FETCH_ASSOC)){
             $nomTopicTmp = $data1['nomtopic'];
-            $select .= "<div class='row'>
-                            <div class='col'>
+            $select .= "
+                            <li class='list-group-item'>
                                 <a href='#\'>" . $nomTopicTmp . "</a>
-                            </div>
-                        </div>";
+                            </li>
+                        ";
         }
     }
-    $select .= "</div>";
+    $select .= "</ul>";
     echo $select;
     $conn = null;
 ?>

@@ -13,6 +13,7 @@
         <link rel="stylesheet" href="css/bootstrap.min.css" crossorigin="anonymous">
 
         <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" type="text/css" href="css/topic.css">
         <script type="text/javascript" src="js/index.js"></script>
         <title>Accueil</title>
     </head>
