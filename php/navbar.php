@@ -9,50 +9,6 @@
                 <?php
                     include("php/getCategories.php");
                 ?>
-                <!--<li class="nav-item dropdown">
-                    <a class="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown">Pays</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Belgique</a></li>
-                        <li><a class="dropdown-item" href="#">France</a></li>
-                        <li><a class="dropdown-item" href="#">Suisse</a></li>
-                    </ul>
-                </li>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown">Jeuxvideo</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Xbox One</a></li>
-                        <li><a class="dropdown-item" href="#">Ps4</a></li>
-                    </ul>
-                </li>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown">Site web</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">HTML/CSS</a></li>
-                        <li><a class="dropdown-item" href="#">Javascript</a></li>
-                        <li><a class="dropdown-item" href="#">PHP</a></li>
-                    </ul>
-                </li>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown">Programmation</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">C++</a></li>
-                        <li><a class="dropdown-item" href="#">Java</a></li>
-                        <li><a class="dropdown-item" href="#">Python</a></li>
-                    </ul>
-                </li>
-
-                <li class="nav-item dropdown">
-                    <a class="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown">Systèmes d'exploitation</a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Windows</a></li>
-                        <li><a class="dropdown-item" href="#">MacOs</a></li>
-                        <li><a class="dropdown-item" href="#">Linux</a></li>
-                    </ul>
-                </li>-->
-
             </ul>
         </div>
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" id="navbarconnection">
