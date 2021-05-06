@@ -16,12 +16,23 @@
             include("php/navbar.php");
         ?>
         <?php
-            include("php/getTopics.php");
+            $vTheme=$_GET['gTheme'];
+            /*include("php/getTopics.php");*/
         ?>
+
+        <h1>
+            <?php
+            echo $vTheme;
+
+            /*include("php/getTopics.php");*/
+        ?>
+        </h1>
 
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="js/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
         <script src="js/popper.min.js" crossorigin="anonymous"></script>
         <script src="js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+        <script src="js/goTopic.js" crossorigin="anonymous"></script>
     </body>
 </html>

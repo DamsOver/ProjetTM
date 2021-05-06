@@ -31,9 +31,9 @@ insert into theme(nomtheme, mail, nomcat) values ('HTML/CSS','damien@me.com', 'S
 insert into theme(nomtheme, mail, nomcat) values ('Javascript','damien@me.com', 'Site Web');
 insert into theme(nomtheme, mail, nomcat) values ('PHP','damien@me.com', 'Site Web');
 
-insert into theme(nomtheme, mail, nomcat) values ('Windows','damien@me.com', 'Systèmes d\'exploitation');
-insert into theme(nomtheme, mail, nomcat) values ('MacOs','damien@me.com', 'Systèmes d\'exploitation');
-insert into theme(nomtheme, mail, nomcat) values ('Linux','damien@me.com', 'Systèmes d\'exploitation');
+insert into theme(nomtheme, mail, nomcat) values ('Windows','damien@me.com', 'OS');
+insert into theme(nomtheme, mail, nomcat) values ('MacOs','damien@me.com', 'OS');
+insert into theme(nomtheme, mail, nomcat) values ('Linux','damien@me.com', 'OS');
 
 
 

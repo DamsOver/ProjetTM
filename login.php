@@ -66,5 +66,7 @@
         <script src="js/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
         <script src="js/popper.min.js" crossorigin="anonymous"></script>
         <script src="js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+        <script src="js/goTopic.js" crossorigin="anonymous"></script>
     </body>
 </html>
