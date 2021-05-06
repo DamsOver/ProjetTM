@@ -1,42 +1,57 @@
 <?php
-    // Initialiser la session
     session_start();
-    // Vérifiez si l'utilisateur est connecté, sinon redirigez-le vers la page de connexion
-    if(!isset($_SESSION["username"])){
-        header("Location: login.php");
-        exit();
-    }
 ?>
 
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" crossorigin="anonymous">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="css/bootstrap.min.css" crossorigin="anonymous">
 
-	<link rel="stylesheet" type="text/css" href="css/index.css">
-    <script type="text/javascript" src="js/index.js"></script>
-    <title></title>
-</head>
-<body>
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <script type="text/javascript" src="js/index.js"></script>
+        <title>Accueil</title>
+    </head>
+    <body>
+
+        <?php
+            include("php/navbar.php");
+        ?>
+
+        <h1 style="color:white;">Bienvenu sur pro-g(r)ammer !</h1>
+        <h2 style="color:white;">Tu est Dev ? Ou bien Gamer ? Ce forum est TON forum ! </h2>
+
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="js/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+        <script src="js/popper.min.js" crossorigin="anonymous"></script>
+        <script src="js/bootstrap.min.js" crossorigin="anonymous"></script>
 
 
-    <?php
-      include("php/navbar.php");
-    ?>
+    <script>
+    $(document).ready(function(){
 
-    <div class="sucess">
-        <h1>Bienvenue <?php echo $_SESSION['username']; ?>!</h1>
-        <p>C'est votre tableau de bord.</p>
-        <a href="logout.php">Déconnexion</a>
-    </div>
+        $.ajax({
+            url: 'php/getCategories.php',
+            dataType:'json',
 
-	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="js/jquery-3.4.1.slim.min.js" crossorigin="anonymous"></script>
-    <script src="js/popper.min.js" crossorigin="anonymous"></script>
-    <script src="js/bootstrap.min.js" crossorigin="anonymous"></script>
-</body>
+            success:function(response){
+                ajax.parseJSON(response);
+            }
+        });
+
+    });
+
+    let ajax = {
+        parseJSON:function(response) {
+            for (let i = 0; i < response.length; i++) {
+                $('#elts_cat').append("<li>"+ response[i].id +"</li>");
+            }
+        }
+    }
+
+</script>
+    </body>
 </html>

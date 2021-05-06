@@ -16,7 +16,7 @@ insert into topic(nomtopic, mail, nomtheme) values ('Comment faire une requete a
 insert into commentaire(texte, dateajout, mail, idtopic) values ('Bonjour jai un problème comment le résoudre?', '2021-04-26','damien@me.com', '5');
 insert into commentaire(texte, dateajout, mail, idtopic) values ('Comment fo faire ?', '2021-04-27','damien@me.com', '6');
 
-
+update utilisateur set role = '2' where mail = "nicolas@me.com";
 
 /*insert into likecom(mail, idcom) values ('damien@me.com','1');
 insert into likecom(mail, idcom) values ('martin@me.com','2');

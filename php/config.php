@@ -13,8 +13,10 @@
     define('DB_NAME', 'programmer_bdd');
 
     // Connexion à la base de données MySQL
-    $conn = new PDO('mysql:host='.DB_SERVER.';dbname='.DB_NAME.'', DB_USERNAME, DB_PASSWORD);
-
-    // Vérifier la connexion
+    try {
+        $conn = new PDO('mysql:host='.DB_SERVER.';dbname='.DB_NAME.'', DB_USERNAME, DB_PASSWORD, array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
+    } catch(PDOException $e) {
+        echo "Connection failed:".$e->getMessage();
+    }
 
 ?>
