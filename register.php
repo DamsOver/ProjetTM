@@ -58,6 +58,10 @@
             <input type="submit" name="send" value="S'inscrire">
         </form>
 
+        <form action="topic.php">
+            <input type="submit" value="test affichage topic" />
+        </form>
+
         <?php } ?>
 
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->

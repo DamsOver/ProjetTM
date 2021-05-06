@@ -1,0 +1,15 @@
+.titre{
+    color: #b8daff;
+}
+.single-comment {
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    color: #b8daff;
+}
+.grid-wrapper{
+    align-self: center;
+    width:calc(70% - 3px);
+    margin-left:calc(15% + 3px);
+}
+
