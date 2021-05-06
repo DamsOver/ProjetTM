@@ -32,27 +32,27 @@
 
 
     <script>
-    $(document).ready(function(){
+        $(document).ready(function(){
 
-        $.ajax({
-            url: 'php/getCategories.php',
-            dataType:'json',
+            $.ajax({
+                url: 'php/getCategories.php',
+                dataType:'json',
 
-            success:function(response){
-                ajax.parseJSON(response);
-            }
+                success:function(response){
+                    ajax.parseJSON(response);
+                }
+            });
+
         });
 
-    });
-
-    let ajax = {
-        parseJSON:function(response) {
-            for (let i = 0; i < response.length; i++) {
-                $('#elts_cat').append("<li>"+ response[i].id +"</li>");
+        let ajax = {
+            parseJSON:function(response) {
+                for (let i = 0; i < response.length; i++) {
+                    $('#elts_cat').append("<li>"+ response[i].id +"</li>");
+                }
             }
         }
-    }
 
-</script>
+    </script>
     </body>
 </html>
