@@ -43,7 +43,6 @@ insert into commentaire(texte, dateajout, mailcom, idtopic) values ('Bonjour jai
 insert into commentaire(texte, dateajout, mailcom, idtopic) values ('test de date?', '2021-04-21','martin@me.com', '1');
 insert into commentaire(texte, dateajout, mailcom, idtopic) values ('Comment fo faire ?', '2021-04-27','damien@me.com', '2');
 
-
 select * from commentaire inner join topic using(idtopic) where nomtopic ="Comment créer un menu déroulant ?";
 
 /*insert into likecom(mail, idcom) values ('damien@me.com','1');

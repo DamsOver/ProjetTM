@@ -28,13 +28,13 @@
                 $username = stripslashes($_REQUEST['user']);
                 $password = stripslashes($_REQUEST['password']);
 
-                $requete2 = $conn->prepare("SELECT * FROM utilisateur");
-                $requete2->bindValue(':username', $username, PDO::PARAM_STR);
-                $requete2->execute();
+                $requete2 = $conn -> prepare("SELECT * FROM utilisateur");
+                $requete2 -> bindValue(':username', $username, PDO::PARAM_STR);
+                $requete2 -> execute();
                 $test = false;
 
-                while ($elt = $requete2->fetch()) {
-                    if($elt['pseudo']==$username && password_verify($_POST["password"], $elt['motDePasse'])) {
+                while ($elt = $requete2 -> fetch()) {
+                    if($elt['pseudo'] == $username && password_verify($_POST["password"], $elt['motDePasse'])) {
                         echo $elt['pseudo'] . ' : OK !';
                         $_SESSION['username'] = $username;
                         $_SESSION['grade'] = $elt['role'];
@@ -42,7 +42,7 @@
                     }
                 }
 
-                $requete2->closeCursor();
+                $requete2 -> closeCursor();
 
                 if($test == true) {
                     header("Location: index.php");

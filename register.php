@@ -27,26 +27,52 @@
                 // récupérer le mot de passe et supprimer les antislashes ajoutés par le formulaire
                 $password = stripslashes($_REQUEST['password']);
                 $password = password_hash($password, PASSWORD_DEFAULT);
+                $passwordCheck = stripslashes($_REQUEST['passwordCheck']);
+                $passwordCheck = password_hash($passwordCheck, PASSWORD_DEFAULT);
 
-                $grade = '1';
+                $inscrire = true;
+                $erreurMotDePasse = false;
+                if($username == "") {
+                    $inscrire = false;
+                } else if($email == "" or !preg_match("#[a-zA-Z0-9]+@[a-zA-Z0-9]+\.([a-z]){2, 3}#", $email)) {
+                    $inscrire = false;
+                } else if($password = "") {
+                    $inscrire = false;
+                } else if($passwordCheck == "") {
+                    $inscrire = false;
+                } else if($password != $passwordCheck) {
+                    $inscrire = false;
+                    $erreurMotDePasse = true;
+                }
 
-                //requéte SQL + mot de passe crypté
-                $requete = $conn->prepare("INSERT into `utilisateur` (pseudo, mail, motDePasse, role)
+                if($inscrire) {
+                    $grade = '1';
+
+                    //requéte SQL + mot de passe crypté
+                    $requete = $conn->prepare("INSERT into `utilisateur` (pseudo, mail, motDePasse, role)
                 VALUES (:username, :email, :password, :grade)");
 
-                $requete -> bindValue(':username', $username, PDO::PARAM_STR);
-                $requete -> bindValue(':email', $email, PDO::PARAM_STR);
-                $requete -> bindValue(':password', $password, PDO::PARAM_STR);
-                $requete -> bindValue(':grade', $grade, PDO::PARAM_STR);
+                    $requete -> bindValue(':username', $username, PDO::PARAM_STR);
+                    $requete -> bindValue(':email', $email, PDO::PARAM_STR);
+                    $requete -> bindValue(':password', $password, PDO::PARAM_STR);
+                    $requete -> bindValue(':grade', $grade, PDO::PARAM_STR);
 
-                $requete->execute();
+                    $requete -> execute();
 
-                if($conn != null){
-                    echo "<div class='success'>
+                    if($conn != null){
+                        echo "<div class='success'>
                             <h3>Vous êtes inscrit avec succès.</h3>
                             <p>Cliquez ici pour vous <a href='login.php'>connecter</a></p>
                             </div>";
+                    }
+                } else {
+                    if($erreurMotDePasse) {
+                        echo "<h1>Les mots de passent doivent correspondre.</h1>";
+                    } else {
+                        echo "<h1>Merci de remplir tout les champs.</h1>";
+                    }
                 }
+
             } else {
         ?>
 
@@ -57,10 +83,6 @@
             <input type="password" name="password" placeholder="Mot de passe">
             <input type="password" name="passwordCheck" placeholder="Confirmer le mot de passe">
             <input type="submit" name="send" value="S'inscrire">
-        </form>
-
-        <form action="topic.php">
-            <input type="submit" value="test affichage topic" />
         </form>
 
         <?php } ?>

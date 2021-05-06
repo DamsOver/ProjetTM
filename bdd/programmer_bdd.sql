@@ -7,7 +7,6 @@ create table if not exists utilisateur (
     mail varchar(40) not null,
     pseudo varchar(20) not null,
     motDePasse varchar(255) not null,
-    photoprofil MEDIUMBLOB,
     role TINYINT not null,
     primary key(mail)
 )engine=innodb;
