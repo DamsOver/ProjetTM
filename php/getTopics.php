@@ -1,38 +1,39 @@
 <?php
-    /*echo json_encode($handle->fetchAll(PDO::FETCH_ASSOC));*/
-
-    class TableRows extends RecursiveIteratorIterator {
+    class TableRowsTopics extends RecursiveIteratorIterator {
         function __construct($it) {
             parent::__construct($it, self::LEAVES_ONLY);
         }
 
         function current() {
-            return "<a class=\"nav-link  dropdown-toggle\" href=\"displayTopics.php\" data-bs-toggle=\"dropdown\">" . parent::current(). "</a>";
+            return "<div class='row'>
+                        <div class='col'>
+                            <a href='#\'>" . parent::current(). "</a>
+                        </div>
+                    </div>";
         }
 
         function beginChildren() {
-            echo "<li class=\"nav-item dropdown\">";
+            echo "<div class=\"container\">";
         }
 
         function endChildren() {
-            echo "</li>" . "\n";
+            echo "</div>" . "\n";
         }
     }
 
     try {
         include("php/config.php");
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $stmt = $conn->prepare("select * from categorie");
+        $stmt = $conn->prepare("select nomtopic from topic");
         $stmt->execute();
 
         // set the resulting array to associative
         $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) {
+        foreach(new TableRowsTopics(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) {
             echo $v;
         }
     } catch(PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
     $conn = null;
-
 ?>
