@@ -35,8 +35,6 @@ insert into theme(nomtheme, mail, nomcat) values ('Windows','damien@me.com', 'OS
 insert into theme(nomtheme, mail, nomcat) values ('MacOs','damien@me.com', 'OS');
 insert into theme(nomtheme, mail, nomcat) values ('Linux','damien@me.com', 'OS');
 
-
-
 insert into topic(nomtopic, mail, nomtheme) values ('Comment créer un menu déroulant ?', 'damien@me.com','JavaScript');
 insert into topic(nomtopic, mail, nomtheme) values ('Comment faire une requete ajax ?', 'damien@me.com','JavaScript');
 

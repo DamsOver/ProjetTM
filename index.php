@@ -17,7 +17,6 @@
         <title>Accueil</title>
     </head>
     <body>
-
         <?php
             include("php/navbar.php");
         ?>

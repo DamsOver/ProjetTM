@@ -43,7 +43,7 @@
 
                 $requete2->closeCursor();
 
-                if($test==true) {
+                if($test == true) {
                     header("Location: index.php");
                 } else {
                     $message = "Le nom d'utilisateur ou le mot de passe est incorrect.";
@@ -52,14 +52,14 @@
         ?>
 
         <form class="box" action="" method="post">
-        <h1>Login</h1>
-        <input type="text" name="user" placeholder="Nom d'utilisateur">
-        <input type="password" name="password" placeholder="Mot de passe">
-        <input type="submit" name="send" value="Login">
+            <h1>Login</h1>
+            <input type="text" name="user" placeholder="Nom d'utilisateur">
+            <input type="password" name="password" placeholder="Mot de passe">
+            <input type="submit" name="send" value="Login">
         </form>
 
         <?php if (! empty($message)) { ?>
-        <p class="errorMessage"><?php echo $message; ?></p>
+            <p class="errorMessage"><?php echo $message; ?></p>
         <?php } ?>
 
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->

@@ -33,18 +33,18 @@
                 $requete = $conn->prepare("INSERT into `utilisateur` (pseudo, mail, motDePasse, role)
                 VALUES (:username, :email, :password, :grade)");
 
-                $requete->bindValue(':username', $username, PDO::PARAM_STR);
-                $requete->bindValue(':email', $email, PDO::PARAM_STR);
-                $requete->bindValue(':password', $password, PDO::PARAM_STR);
-                $requete->bindValue(':grade', $grade, PDO::PARAM_STR);
+                $requete -> bindValue(':username', $username, PDO::PARAM_STR);
+                $requete -> bindValue(':email', $email, PDO::PARAM_STR);
+                $requete -> bindValue(':password', $password, PDO::PARAM_STR);
+                $requete -> bindValue(':grade', $grade, PDO::PARAM_STR);
 
                 $requete->execute();
 
                 if($conn != null){
                     echo "<div class='success'>
-                    <h3>Vous êtes inscrit avec succès.</h3>
-                    <p>Cliquez ici pour vous <a href='login.php'>connecter</a></p>
-                    </div>";
+                            <h3>Vous êtes inscrit avec succès.</h3>
+                            <p>Cliquez ici pour vous <a href='login.php'>connecter</a></p>
+                            </div>";
                 }
             } else {
         ?>
