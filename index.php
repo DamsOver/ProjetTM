@@ -22,8 +22,8 @@
             include("php/navbar.php");
         ?>
 
-        <h1 style="color:white;">Bienvenu sur pro-g(r)ammer !</h1>
-        <h2 style="color:white;">Tu est Dev ? Ou bien Gamer ? Ce forum est TON forum ! </h2>
+        <h1 style="color:white;">Bienvenue sur pro-g(r)ammer !</h1>
+        <h2 style="color:white;">Tu es Dev ? Ou bien Gamer ? Ce forum est TON forum ! </h2>
 
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="js/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
