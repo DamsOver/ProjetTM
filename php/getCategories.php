@@ -1,38 +1,28 @@
 <?php
-    /*echo json_encode($handle->fetchAll(PDO::FETCH_ASSOC));*/
 
-    class TableRows extends RecursiveIteratorIterator {
-        function __construct($it) {
-            parent::__construct($it, self::LEAVES_ONLY);
-        }
+    include("php/config.php");
 
-        function current() {
-            return "<a class=\"nav-link  dropdown-toggle\" href=\"#\" data-bs-toggle=\"dropdown\">" . parent::current(). "</a>";
-        }
+    $req1 = $conn->prepare("select * from categorie");
+    $req1->execute();
 
-        function beginChildren() {
-            echo "<li class=\"nav-item dropdown\">";
-        }
+    $select='';
 
-        function endChildren() {
-            echo "</li>" . "\n";
+    if($req1->rowCount()>0){
+        while($data1=$req1->fetch(PDO::FETCH_ASSOC)){
+            $nomCatTmp = $data1['nomcat'];
+            $req2 = $conn->prepare("select nomtheme from theme where nomcat = '$nomCatTmp'");
+            $req2->execute();
+            $select.=   '<li class="nav-item dropdown"><a class="nav-link  dropdown-toggle" href="#" data-bs-toggle="dropdown">' . $nomCatTmp . '</a><ul class="dropdown-menu">';
+            if($req2->rowCount()>0) {
+                while($data2=$req2->fetch(PDO::FETCH_ASSOC)) {
+                    $nomThemeTmp = $data2['nomtheme'];
+                    $select.=   '<li><a class="dropdown-item" href="#">'.$nomThemeTmp.'</a></li>';
+                }
+            }
+            $select.= '</ul></li>';
         }
     }
 
-    try {
-        include("php/config.php");
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $stmt = $conn->prepare("select * from categorie");
-        $stmt->execute();
-
-        // set the resulting array to associative
-        $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        foreach(new TableRows(new RecursiveArrayIterator($stmt->fetchAll())) as $k=>$v) {
-            echo $v;
-        }
-    } catch(PDOException $e) {
-        echo "Error: " . $e->getMessage();
-    }
+    echo $select;
     $conn = null;
-
 ?>
