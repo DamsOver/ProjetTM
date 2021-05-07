@@ -30,7 +30,7 @@ create table if not exists topic (
     nomtopic varchar(50) not null,
     mailTopic varchar(40) not null,
     nomtheme varchar(20) not null,
-    dateajoutTopic smalldatetime not null,
+    dateajoutTopic DATETIME not null,
     primary key(idtopic),
     key(mailTopic),
     key(nomtheme)
@@ -39,7 +39,7 @@ create table if not exists topic (
 create table if not exists commentaire (
     idcom int not null auto_increment,
     texte varchar(1000) not null,
-    dateajoutcom smalldatetime not null,
+    dateajoutcom DATETIME not null,
     mailCom varchar(40) not null,
     idtopic int not null,
     primary key(idcom),
