@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="index.php"><img src="logo.jpg" width="40" height="30" alt="Site logo">Menu</a>
+        <a class="navbar-brand" href="index.php"><img src="logo.png" width="40" height="30" alt="Site logo">Menu</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent, #navbarconnection" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
