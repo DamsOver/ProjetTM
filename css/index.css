@@ -88,3 +88,11 @@ h1,h2 {
   text-decoration: none;
   color: #58aef7;
 }
+
+#btnAdmin {
+    color:#f52035;
+}
+
+#btnAdmin:hover{
+    color:#8f0e04;
+}

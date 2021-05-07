@@ -1,0 +1,10 @@
+#themeUser{
+    margin-left: 8%;
+    margin-rigth: 8%;
+    margin-top: 10px;
+    width:calc(84% - 3px);
+}
+
+#btnAdmin{
+    align-self: end;
+}

@@ -21,27 +21,27 @@
                                 switch ($_SESSION['grade']) {
                                     case 1:
                                         ?>
-                                        <span class="nav-link" style="color:#53afd4;">
+                                        <a class="nav-link" style="color:#53afd4;">
+
                                         <?php
                                         echo "Utilisateur";
                                     break;
                                     case 2:
                                          ?>
-                                        <span class="nav-link" style="color:#1ee653;">
+                                        <a class="nav-link" style="color:#1ee653;">
                                         <?php
                                         echo "Moderateur";
                                     break;
                                     case 3:
                                         ?>
-                                        <span class="nav-link" style="color:#f52035;">
+                                        <a class="nav-link" id="btnAdmin" href="displayAdmin.php">
                                         <?php
                                         echo "Administrateur";
                                     break;
                                     default:
                                         echo "error";
                                 }
-                            ?> :
-                            </span>
+                            ?></a>
                         </li>
                         <li class="nav-item"> <span class="nav-link" style="color:white;"> <?php echo $_SESSION['username']; ?> | </span></li>
                         <li class="nav-item">
