@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -20,7 +24,6 @@ include("php/navbar.php");
 ?>
 <?php
 require('php/config.php');
-session_start();
 ?>
 <section id ="mainSection">
     <div class ="grid-wrapper">
