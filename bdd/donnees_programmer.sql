@@ -35,13 +35,13 @@ insert into theme(nomtheme, mailtheme, nomcat) values ('Windows','damien@me.com'
 insert into theme(nomtheme, mailtheme, nomcat) values ('MacOs','damien@me.com', 'OS');
 insert into theme(nomtheme, mailtheme, nomcat) values ('Linux','damien@me.com', 'OS');
 
-insert into topic(nomtopic, mailtopic, nomtheme) values ('Comment créer un menu déroulant ?', 'damien@me.com','JavaScript');
-insert into topic(nomtopic, mailtopic, nomtheme) values ('Comment faire une requete ajax ?', 'damien@me.com','JavaScript');
+insert into topic(nomtopic, mailtopic, nomtheme, dateajouttopic) values ('Comment créer un menu déroulant ?', 'damien@me.com','JavaScript', '2021-04-26');
+insert into topic(nomtopic, mailtopic, nomtheme, dateajouttopic) values ('Comment faire une requete ajax ?', 'damien@me.com','JavaScript', '2021-04-27');
 
-insert into commentaire(texte, dateajout, mailcom, idtopic) values ('Bonjour jai un problème comment le résoudre?', '2021-04-26','damien@me.com', '1');
-insert into commentaire(texte, dateajout, mailcom, idtopic) values ('Bonjour jai un?', '2021-04-27','martin@me.com', '1');
-insert into commentaire(texte, dateajout, mailcom, idtopic) values ('test de date?', '2021-04-21','martin@me.com', '1');
-insert into commentaire(texte, dateajout, mailcom, idtopic) values ('Comment fo faire ?', '2021-04-27','damien@me.com', '2');
+insert into commentaire(texte, dateajoutcom, mailcom, idtopic) values ('Bonjour jai un problème comment le résoudre?', '2021-04-26','damien@me.com', '1');
+insert into commentaire(texte, dateajoutcom, mailcom, idtopic) values ('Bonjour jai un?', '2021-04-27','martin@me.com', '1');
+insert into commentaire(texte, dateajoutcom, mailcom, idtopic) values ('test de date?', '2021-04-21','martin@me.com', '1');
+insert into commentaire(texte, dateajoutcom, mailcom, idtopic) values ('Comment fo faire ?', '2021-04-27','damien@me.com', '2');
 
 select * from commentaire inner join topic using(idtopic) where nomtopic ="Comment créer un menu déroulant ?";
 
