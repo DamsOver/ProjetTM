@@ -22,9 +22,9 @@
                     $requete -> execute();
 
                     if($conn != null){
-                        echo "<div class='success'>
-                            <h3>Topic ajouté avec succès.</h3>
-                            </div>";
+                         echo "    <script>
+                                   /*alert(\"Topic ajouté avec succès\");*/
+                                  </script>";
                     } else {
                         echo "    <script>
                                    alert(\"Problème de connexion avec la bdd\");

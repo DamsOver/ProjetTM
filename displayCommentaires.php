@@ -25,7 +25,7 @@
 
 
                         echo "    <script>
-                                   alert(\"Commentaire ajouté avec succès\");
+                                   /*alert(\"Commentaire ajouté avec succès\");*/
                                   </script>";
                     } else {
                         echo "    <script>
