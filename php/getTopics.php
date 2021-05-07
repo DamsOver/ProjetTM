@@ -12,7 +12,7 @@
             $select .= "<div class='col-12 col-md-6'>
                             <div class='card'>
                                 <div class='card-body'>
-                                    <p class='card-title'>Topic : " . $nomTopicTmp . "</p>
+                                    <p class='card-title'>Topic ouvert le : DATE</p>
                                     <a href='#' class='stretched-link'>" . $nomTopicTmp . "</a>
                                 </div>
                             </div>
