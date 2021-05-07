@@ -12,7 +12,7 @@ if($req1 -> rowCount() > 0){
         $MailTmp = $data1['mail'];
         $select .= '<li class="list-group-item">' .$PseudoTmp .'</br>'.$MailTmp .'
                 <form method ="post" class="form-check-inline" style="float:right;">
-                    <button style="float:right;" name="suppr" value=<?php $MailTmp ?> supprimer </button>
+                    <button style="float:right;" name="suppr" value="salut"> supprimer </button>
                 </form>
             </li>';
     }
