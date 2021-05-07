@@ -4,8 +4,6 @@ $topic = $_GET['gTopic'];
 $req1 = $conn->prepare("select commentaire.texte,commentaire.dateajoutcom,utilisateur.pseudo from commentaire left join topic using(idtopic) left join utilisateur on commentaire.mailcom=utilisateur.mail where nomtopic ='$topic' order by dateajoutcom");
 $req1 -> execute();
 
-
-
 $select = '';
 
 if($req1 -> rowCount() > 0){
