@@ -54,14 +54,14 @@ create table if not exists likecom (
     key(idcom)
 ) engine=innodb;
 
-alter table theme add constraint fkthemeutilisateur foreign key(mailTheme) references utilisateur(mail),
-add constraint fkthemecategorie foreign key(nomcat) references categorie(nomcat);
+alter table theme add constraint fkthemeutilisateur foreign key(mailTheme) references utilisateur(mail) on delete cascade,
+add constraint fkthemecategorie foreign key(nomcat) references categorie(nomcat) on delete cascade;
 
-alter table topic add constraint fktopicutilisateur foreign key(mailTopic) references utilisateur(mail),
-add constraint fktopictheme foreign key(nomtheme) references theme(nomtheme);
+alter table topic add constraint fktopicutilisateur foreign key(mailTopic) references utilisateur(mail) on delete cascade,
+add constraint fktopictheme foreign key(nomtheme) references theme(nomtheme) on delete cascade;
 
-alter table commentaire add constraint fkcommentaireutilisateur foreign key(mailCom) references utilisateur(mail),
-add constraint fkcommentairetopic foreign key(idtopic) references topic(idtopic);
+alter table commentaire add constraint fkcommentaireutilisateur foreign key(mailCom) references utilisateur(mail) on delete cascade,
+add constraint fkcommentairetopic foreign key(idtopic) references topic(idtopic) on delete cascade;
 
-alter table likecom add constraint likecomutilisateur foreign key(mailLike) references utilisateur(mail),
-add constraint likecomcommentaire foreign key(idcom) references commentaire(idcom);
+alter table likecom add constraint likecomutilisateur foreign key(mailLike) references utilisateur(mail) on delete cascade,
+add constraint likecomcommentaire foreign key(idcom) references commentaire(idcom) on delete cascade;

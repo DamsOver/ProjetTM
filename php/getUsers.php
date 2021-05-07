@@ -12,14 +12,17 @@ if($req1 -> rowCount() > 0){
         $MailTmp = $data1['mail'];
         $select .= '<li class="list-group-item">' .$PseudoTmp .'</br>'.$MailTmp .'
                 <form method ="post" class="form-check-inline" style="float:right;">
-                    <button style="float:right;" name="suppr" value="salut"> supprimer </button>
+                    <button style="float:right;" name="suppr" value='.$MailTmp.'> supprimer </button>
                 </form>
             </li>';
     }
 }
 
 if (isset($_POST['suppr'])) {
-    echo ($_POST['suppr']);
+    $mailASup = $_POST['suppr'];
+    $req1 = $conn->prepare("delete from utilisateur where mail = '$mailASup'");
+    $req1 -> execute();
+    header("Location: displayAdmin.php");
 }
 
 
