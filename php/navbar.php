@@ -13,6 +13,9 @@
         </div>
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" id="navbarconnection">
             <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="localisation.php">Où suis-je ?</a>
+                </li>
                 <?php
                     // Vérifiez si l'utilisateur est connecté, sinon redirigez-le vers la page de connexion
                     if(isset($_SESSION["username"])){  ?>
