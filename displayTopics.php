@@ -7,7 +7,7 @@
             if (isset($_REQUEST['nTitreTopic'])) {
 
                 $vTitreTopic = stripslashes($_REQUEST['nTitreTopic']);
-                $vMail = $_SESSION['email'];
+                $vMail = $_SESSION['mail'];
                 $vTheme = $_GET['gTheme'];
                 /*$vTextTopic = stripslashes($_REQUEST['nTextTopic']);*/
 
