@@ -29,29 +29,11 @@ session_start();
             echo $_GET['gTopic'];
             ?>
         </div>
-        <nav aria-label="navigation">
-            <ul class="pagination pl-4 ml-1">
-                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-            </ul>
-        </nav>
         <div class ="comments">
             <?php
             include("php/getCommentaires.php");
             ?>
         </div>
-        <nav aria-label="navigation">
-            <ul class="pagination pl-4 ml-1">
-                <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
-            </ul>
-        </nav>
         <div class="new-comment">
             <div class="titre h4 ml-1 pt-4 pl-4 pr-4">
                 Votre commentaire :
