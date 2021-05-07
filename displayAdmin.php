@@ -46,6 +46,10 @@ include("php/navbar.php");
         </div>
     </div>
 </div>
+
+
+
+
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="js/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
 <script src="js/popper.min.js" crossorigin="anonymous"></script>
