@@ -9,7 +9,7 @@
     if($req1 -> rowCount() > 0){
         while($data1 = $req1 -> fetch(PDO::FETCH_ASSOC)){
             $nomTopicTmp = $data1['nomtopic'];
-            $select .= "<div class='col'>
+            $select .= "<div class='col-12 col-md-6'>
                             <div class='card'>
                                 <div class='card-body'>
                                     <p class='card-title'>Topic : " . $nomTopicTmp . "</p>
