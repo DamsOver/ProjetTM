@@ -2,6 +2,38 @@
     session_start();
 ?>
 
+<?php
+            require('php/config.php');
+            if (isset($_REQUEST['nTitreTopic'])) {
+
+                $vTextArea = stripslashes($_REQUEST['nTextArea']);
+                $vMail = $_SESSION['email'];
+                $vTheme = $_GET['gTheme'];
+                /*$vTextTopic = stripslashes($_REQUEST['nTextTopic']);*/
+
+                    //requéte SQL + mot de passe crypté
+                    $requete = $conn->prepare("INSERT into `topic` (texte, dateajoutcom, mailCom, idtopic)
+                VALUES (:vTextArea, now(), :vMail, now())");
+
+                    $requete -> bindValue(':vTextArea', $vTextArea, PDO::PARAM_STR);
+                    $requete -> bindValue(':vMail', $vMail, PDO::PARAM_STR);
+                    $requete -> bindValue(':vTheme', $vTheme, PDO::PARAM_STR);
+
+                    $requete -> execute();
+
+                    if($conn != null){
+                        echo "<div class='success'>
+                            <h3>Topic ajouté avec succès.</h3>
+                            </div>";
+                    } else {
+                        echo "    <script>
+                                   alert(\"Problème de connexion avec la bdd\");
+                                  </script>";
+                    }
+
+            }
+        ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -22,6 +54,7 @@
     <?php
         include("php/navbar.php");
     ?>
+
     <section id ="mainSection">
         <div class ="grid-wrapper">
             <div class="titre h2 ml-1 pt-4 pl-4 pr-4">
@@ -43,10 +76,10 @@
     </section>
 
     <div class="container">
-        <form>
+        <form action="" method="post">
             <div class="form-group">
                 <label for="InputTextTopic" style="color:white;">Repondre :</label>
-                <textarea class="form-control" id="InputTextTopic" rows="3"> </textarea>
+                <textarea name="nTextArea" class="form-control" id="InputTextTopic" rows="3"> </textarea>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
