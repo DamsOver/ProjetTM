@@ -45,6 +45,6 @@ insert into commentaire(texte, dateajoutcom, mailcom, idtopic) values ('Comment 
 
 select * from commentaire inner join topic using(idtopic) where nomtopic ="Comment créer un menu déroulant ?";
 
-/*insert into likecom(mail, idcom) values ('damien@me.com','1');
+insert into likecom(mail, idcom) values ('damien@me.com','1');
 insert into likecom(mail, idcom) values ('martin@me.com','2');
-insert into likecom(mail, idcom) values ('florian@me.com','1');*/
+insert into likecom(mail, idcom) values ('florian@me.com','1');

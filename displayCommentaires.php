@@ -19,35 +19,39 @@
     <title></title>
 </head>
 <body>
-<?php
-include("php/navbar.php");
-?>
-<?php
-require('php/config.php');
-?>
-<section id ="mainSection">
-    <div class ="grid-wrapper">
-        <div class="titre h2 ml-1 pt-4 pl-4 pr-4">
-            <?php
-            echo $_GET['gTopic'];
-            ?>
-        </div>
-        <div class ="comments">
-            <?php
-            include("php/getCommentaires.php");
-            ?>
-        </div>
-        <div class="new-comment">
-            <div class="titre h4 ml-1 pt-4 pl-4 pr-4">
-                Votre commentaire :
+    <?php
+        include("php/navbar.php");
+    ?>
+    <section id ="mainSection">
+        <div class ="grid-wrapper">
+            <div class="titre h2 ml-1 pt-4 pl-4 pr-4">
+                <?php
+                    echo $_GET['gTopic'];
+                ?>
+            </div>
+            <div class ="comments">
+                <?php
+                    include("php/getCommentaires.php");
+                ?>
+            </div>
+            <div class="new-comment">
+                <div class="titre h4 ml-1 pt-4 pl-4 pr-4">
+                    Votre commentaire :
+                </div>
             </div>
         </div>
-        <div class="editor" contenteditable>
-            <h1>Simple Html editor</h1>
-            <p>Good to start</p>
-        </div>
+    </section>
+
+    <div class="container">
+        <form>
+            <div class="form-group">
+                <label for="InputTextTopic" style="color:white;">Repondre :</label>
+                <textarea class="form-control" id="InputTextTopic" rows="3"> </textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
     </div>
-</section>
+
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="js/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
     <script src="js/popper.min.js" crossorigin="anonymous"></script>

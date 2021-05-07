@@ -1,7 +1,7 @@
 <?php
 include("php/config.php");
 $topic = $_GET['gTopic'];
-$req1 = $conn->prepare("select commentaire.texte,commentaire.dateajout,utilisateur.pseudo from commentaire left join topic using(idtopic) left join utilisateur on commentaire.mailcom=utilisateur.mail where nomtopic ='$topic' order by dateajout");
+$req1 = $conn->prepare("select commentaire.texte,commentaire.dateajoutcom,utilisateur.pseudo from commentaire left join topic using(idtopic) left join utilisateur on commentaire.mailcom=utilisateur.mail where nomtopic ='$topic' order by dateajoutcom");
 $req1 -> execute();
 
 
@@ -11,7 +11,7 @@ $select = '';
 if($req1 -> rowCount() > 0){
     while($data1 = $req1 -> fetch(PDO::FETCH_ASSOC)){
         $TxtComTmp = $data1['texte'];
-        $DateComTmp = $data1['dateajout'];
+        $DateComTmp = $data1['dateajoutcom'];
         $PseudoUtilTmp = $data1['pseudo'];
 
         $select .= '
