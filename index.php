@@ -13,11 +13,11 @@
         <link rel="stylesheet" href="css/bootstrap.min.css" crossorigin="anonymous">
 
         <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" type="text/css" href="css/topic.css">
         <script type="text/javascript" src="js/index.js"></script>
         <title>Accueil</title>
     </head>
     <body>
-
         <?php
             include("php/navbar.php");
         ?>
@@ -30,5 +30,6 @@
         <script src="js/popper.min.js" crossorigin="anonymous"></script>
         <script src="js/bootstrap.min.js" crossorigin="anonymous"></script>
 
+        <script src="js/goTopic.js" crossorigin="anonymous"></script>
     </body>
 </html>

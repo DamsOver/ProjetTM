@@ -1,0 +1,12 @@
+.list-group-item:first-child {
+    margin-top: 20px;
+}
+
+.list-group-item {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+h1 {
+    color: white;
+}

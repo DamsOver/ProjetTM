@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="css/bootstrap.min.css" crossorigin="anonymous">
 
         <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" type="text/css" href="css/topic.css">
         <script type="text/javascript" src="js/index.js"></script>
         <title>Topics</title>
     </head>
@@ -15,6 +16,7 @@
         <?php
             include("php/navbar.php");
         ?>
+
         <?php
             include("php/getTopics.php");
         ?>
@@ -23,5 +25,8 @@
         <script src="js/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
         <script src="js/popper.min.js" crossorigin="anonymous"></script>
         <script src="js/bootstrap.min.js" crossorigin="anonymous"></script>
+
+        <script src="js/goTopic.js" crossorigin="anonymous"></script>
+        <script src="js/goCommentaire.js" crossorigin="anonymous"></script>
     </body>
 </html>
