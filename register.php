@@ -26,26 +26,26 @@
                 $email = stripslashes($_REQUEST['mail']);
                 // récupérer le mot de passe et supprimer les antislashes ajoutés par le formulaire
                 $password = stripslashes($_REQUEST['password']);
-                $password = password_hash($password, PASSWORD_DEFAULT);
+
+
                 $passwordCheck = stripslashes($_REQUEST['passwordCheck']);
-                $passwordCheck = password_hash($passwordCheck, PASSWORD_DEFAULT);
 
                 $inscrire = true;
-                /*$erreurMotDePasse = false;
-                if($username == "") {
-                    $inscrire = false;
-                } else if($email == "" or !preg_match("#[a-zA-Z0-9]+@[a-zA-Z0-9]+\.([a-z]){2, 3}#", $email)) {
-                    $inscrire = false;
-                } else if($password = "") {
-                    $inscrire = false;
-                } else if($passwordCheck == "") {
+                $erreurMotDePasse = false;
+
+                $regex = '/^[^0-9][_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/';
+
+                if(!preg_match($regex, $email)) {
                     $inscrire = false;
                 } else if($password != $passwordCheck) {
                     $inscrire = false;
                     $erreurMotDePasse = true;
-                }*/
+                }
 
                 if($inscrire) {
+                    $password = password_hash($password, PASSWORD_DEFAULT);
+                    $passwordCheck = password_hash($passwordCheck, PASSWORD_DEFAULT);
+
                     $grade = '1';
 
                     //requéte SQL + mot de passe crypté
@@ -64,12 +64,18 @@
                             <h3>Vous êtes inscrit avec succès.</h3>
                             <p>Cliquez ici pour vous <a href='login.php'>connecter</a></p>
                             </div>";
+                    } else {
+                        echo "    <script>
+                                   alert(\"Problème de connexion avec la bdd\");
+                                   window.location.href = 'register.php';
+                                  </script>";
                     }
                 } else {
                     if($erreurMotDePasse) {
-                        echo "<h1>Les mots de passent doivent correspondre.</h1>";
-                    } else {
-                        echo "<h1>Merci de remplir tout les champs.</h1>";
+                        echo "<script>
+                                alert(\"Les mots de passent doivent correspondre\");
+                                window.location.href = 'register.php';
+                                </script>";
                     }
                 }
 
@@ -78,10 +84,10 @@
 
         <form class="box" action="" method="post">
             <h1>Inscription</h1>
-            <input type="text" name="user" placeholder="Nom d'utilisateur">
-            <input type="text" name="mail" placeholder="Adresse e-mail">
-            <input type="password" name="password" placeholder="Mot de passe">
-            <input type="password" name="passwordCheck" placeholder="Confirmer le mot de passe">
+            <input type="text" name="user" placeholder="Nom d'utilisateur" required>
+            <input type="text" name="mail" placeholder="Adresse e-mail" required>
+            <input type="password" name="password" placeholder="Mot de passe" required>
+            <input type="password" name="passwordCheck" placeholder="Confirmer le mot de passe" required>
             <input type="submit" name="send" value="S'inscrire">
         </form>
 

@@ -1,4 +1,4 @@
-$('.list-group .list-group-item a').on('click',function(e){
+$('.row .card .card-body a').on('click',function(e){
     let tmpTopic = e.target.textContent;
     window.location.href = 'displayCommentaires.php?gTopic=' + tmpTopic;
 });
