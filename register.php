@@ -31,7 +31,7 @@
                 $passwordCheck = password_hash($passwordCheck, PASSWORD_DEFAULT);
 
                 $inscrire = true;
-                $erreurMotDePasse = false;
+                /*$erreurMotDePasse = false;
                 if($username == "") {
                     $inscrire = false;
                 } else if($email == "" or !preg_match("#[a-zA-Z0-9]+@[a-zA-Z0-9]+\.([a-z]){2, 3}#", $email)) {
@@ -43,7 +43,7 @@
                 } else if($password != $passwordCheck) {
                     $inscrire = false;
                     $erreurMotDePasse = true;
-                }
+                }*/
 
                 if($inscrire) {
                     $grade = '1';

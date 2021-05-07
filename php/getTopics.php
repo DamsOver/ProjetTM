@@ -4,7 +4,7 @@
     $req1 = $conn->prepare("select nomtopic from topic where nomtheme ='$theme'");
     $req1 -> execute();
 
-    $select = '<div  class="row">';
+    $select = '<div  class="row" style="margin-top: 20px;">';
 
     if($req1 -> rowCount() > 0){
         while($data1 = $req1 -> fetch(PDO::FETCH_ASSOC)){
