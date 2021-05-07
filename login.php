@@ -38,6 +38,7 @@
                         echo $elt['pseudo'] . ' : OK !';
                         $_SESSION['username'] = $username;
                         $_SESSION['grade'] = $elt['role'];
+                        $_SESSION['mail'] = $elt['mail'];
                         $test = true;
                     }
                 }
