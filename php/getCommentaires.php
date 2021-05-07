@@ -22,7 +22,7 @@ if($req1 -> rowCount() > 0){
                             </div>
                             <div class="card-text">
                                 
-                                <div class ="pl-3 pt-1 pr-3">'.$TxtComTmp .'</div>
+                                <div class ="pl-3 pt-1 pr-3" style="background-color: grey;">'.$TxtComTmp .'</div>
                                 <footer class="blockquote-footer">
                                 <div class ="pl-3 pt-1 pr-3">'.$DateComTmp .'</div>
                                 </footer>
