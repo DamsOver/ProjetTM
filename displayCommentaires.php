@@ -4,27 +4,29 @@
 
 <?php
             require('php/config.php');
-            if (isset($_REQUEST['nTitreTopic'])) {
+            if (isset($_REQUEST['nTextArea'])) {
 
                 $vTextArea = stripslashes($_REQUEST['nTextArea']);
-                $vMail = $_SESSION['email'];
-                $vTheme = $_GET['gTheme'];
-                /*$vTextTopic = stripslashes($_REQUEST['nTextTopic']);*/
+                $vMail = $_SESSION['mail'];
+                $vIdTopic = $_GET['gIdTopic'];
 
                     //requéte SQL + mot de passe crypté
-                    $requete = $conn->prepare("INSERT into `topic` (texte, dateajoutcom, mailCom, idtopic)
-                VALUES (:vTextArea, now(), :vMail, now())");
+                    $requete = $conn->prepare("INSERT into `commentaire` (texte, dateajoutcom, mailCom, idtopic)
+                VALUES (:vTextArea, now(), :vMail, :vIdTopic)");
 
                     $requete -> bindValue(':vTextArea', $vTextArea, PDO::PARAM_STR);
                     $requete -> bindValue(':vMail', $vMail, PDO::PARAM_STR);
-                    $requete -> bindValue(':vTheme', $vTheme, PDO::PARAM_STR);
+                    $requete -> bindValue(':vIdTopic', $vIdTopic, PDO::PARAM_INT);
 
                     $requete -> execute();
 
                     if($conn != null){
-                        echo "<div class='success'>
-                            <h3>Topic ajouté avec succès.</h3>
-                            </div>";
+
+
+
+                        echo "    <script>
+                                   alert(\"Commentaire ajouté avec succès\");
+                                  </script>";
                     } else {
                         echo "    <script>
                                    alert(\"Problème de connexion avec la bdd\");
