@@ -49,5 +49,28 @@ include("php/getThemes.php");
 <script src="js/popper.min.js" crossorigin="anonymous"></script>
 <script src="js/bootstrap.min.js" crossorigin="anonymous"></script>
 
+
+
+<script>
+    $(document).ready(function() {
+        $('#MainListGroupUser select').on('change', function(e) {
+            let tmpRole = e.target[e.target.selectedIndex].text;
+            let tmpMailUser =e.target.value;
+            $.ajax({
+                url: "php/updateRole.php",
+                type: "POST",
+                data: {
+                    mailUser: tmpMailUser,
+                    role: tmpRole
+                },
+                cache: false,
+                success: function(dataResult){
+                    console.log(dataResult);
+                }
+            });
+        });
+    });
+</script>
+
 </body>
 </html>

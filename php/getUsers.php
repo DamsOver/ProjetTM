@@ -30,7 +30,7 @@ if(isset($_SESSION['grade'])){
     <div class="container.fluid" id = themeUser>
         <div class="row">
             <div class="col-6 pb-4">
-                <ul class="list-group">';
+                <ul class="list-group" id ="MainListGroupUser">';
 
 
 
@@ -40,18 +40,33 @@ if(isset($_SESSION['grade'])){
             while($data1 = $req1 -> fetch(PDO::FETCH_ASSOC)){
                 $PseudoTmp = $data1['pseudo'];
                 $MailTmp = $data1['mail'];
+                $roleTmp= $data1['role'];
 
                 $select .= '<li class="list-group-item ">
                                 <div class="row">
                                     <div class="col-6 pb-4">
-                                        ' .$PseudoTmp .'        mail : '.$MailTmp .'
+                                        ' .$PseudoTmp .'   mail : 
+                                        <span>'.$MailTmp.'</span>
                                     </div>
-                                    <div class="col-6 pb-4">
-                                        <select class="form-control" name="'.$i1 .'">
-                                            <option>Utilisateur</option>
-                                            <option>Modérateur</option>
-                                            <option>Administrateur</option>
-                                        </select>  
+                                    <div class="col-6 pb-4" id="">
+                                        <select class="form-control" id="'.$i1 .'" value ="ok">';
+                if($roleTmp==1){
+                    $select.='              <option value="'.$MailTmp.'" selected="selected">Utilisateur</option>
+                                            <option value="'.$MailTmp.'">Modérateur</option>
+                                            <option value="'.$MailTmp.'">Administrateur</option>';
+
+                } elseif($roleTmp==2){
+                    $select.='              <option value="'.$MailTmp.'">Utilisateur</option>
+                                            <option value="'.$MailTmp.'" selected="selected">Modérateur</option>
+                                            <option value="'.$MailTmp.'">Administrateur</option>';
+                }
+                else{
+                    $select.='              <option value="'.$MailTmp.'">Utilisateur</option>
+                                            <option value="'.$MailTmp.'">Modérateur</option>
+                                            <option value="'.$MailTmp.'" selected="selected">Administrateur</option>';
+                }
+
+                $select .='              </select>  
                                     </div>
                                 </div>
                                 <form method ="post" class="form-check-inline" style="float:right;">
@@ -61,6 +76,7 @@ if(isset($_SESSION['grade'])){
                 ';
                 $i1+=1;
             }
+
         }else{
             while($data1 = $req1 -> fetch(PDO::FETCH_ASSOC)){
                 $PseudoTmp = $data1['pseudo'];
