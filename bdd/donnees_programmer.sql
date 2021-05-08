@@ -23,7 +23,7 @@ insert into theme(nomtheme, mailtheme, nomcat) values ('Belgique','damien@me.com
 insert into theme(nomtheme, mailtheme, nomcat) values ('France','damien@me.com', 'Pays');
 insert into theme(nomtheme, mailtheme, nomcat) values ('Suisse','damien@me.com', 'Pays');
 
-insert into theme(nomtheme, mailtheme, nomcat) values ('C++','damien@me.com', 'Programmation');
+insert into theme(nomtheme, mailtheme, nomcat) values ('C','damien@me.com', 'Programmation');
 insert into theme(nomtheme, mailtheme, nomcat) values ('Java','damien@me.com', 'Programmation');
 insert into theme(nomtheme, mailtheme, nomcat) values ('Python','damien@me.com', 'Programmation');
 
