@@ -6,30 +6,43 @@
             require('php/config.php');
             if (isset($_REQUEST['nTitreTopic'])) {
 
+                //Topic
                 $vTitreTopic = stripslashes($_REQUEST['nTitreTopic']);
                 $vMail = $_SESSION['mail'];
                 $vTheme = $_GET['gTheme'];
-                /*$vTextTopic = stripslashes($_REQUEST['nTextTopic']);*/
 
-                    //requéte SQL + mot de passe crypté
-                    $requete = $conn->prepare("INSERT into `topic` (nomtopic, mailTopic, nomtheme, dateajoutTopic)
+                //Commentaire
+                $vTextArea = stripslashes($_REQUEST['nTextArea']);
+
+                //requéte SQL + mot de passe crypté
+                $requete = $conn->prepare("INSERT into `topic` (nomtopic, mailTopic, nomtheme, dateajoutTopic)
                 VALUES (:vTitreTopic, :vMail, :vTheme, now())");
 
-                    $requete -> bindValue(':vTitreTopic', $vTitreTopic, PDO::PARAM_STR);
-                    $requete -> bindValue(':vMail', $vMail, PDO::PARAM_STR);
-                    $requete -> bindValue(':vTheme', $vTheme, PDO::PARAM_STR);
+                //Topic
+                $requete -> bindValue(':vTitreTopic', $vTitreTopic, PDO::PARAM_STR);
+                $requete -> bindValue(':vMail', $vMail, PDO::PARAM_STR);
+                $requete -> bindValue(':vTheme', $vTheme, PDO::PARAM_STR);
+                $requete -> execute();
+                $idTmp = $conn->lastInsertId();
 
-                    $requete -> execute();
+                $requete2 = $conn->prepare("INSERT into `commentaire` (texte, dateajoutcom, mailCom, idtopic)
+                VALUES (:vTextArea, now(), :vMail, :idTmp)");
 
-                    if($conn != null){
-                        echo "<div class='success'>
-                            <h3>Topic ajouté avec succès.</h3>
-                            </div>";
-                    } else {
-                        echo "    <script>
-                                   alert(\"Problème de connexion avec la bdd\");
-                                  </script>";
-                    }
+                //Commentaire
+                $requete2 -> bindValue(':vTextArea', $vTextArea, PDO::PARAM_STR);
+                $requete2 -> bindValue(':vMail', $vMail, PDO::PARAM_STR);
+                $requete2 -> bindValue(':idTmp', $idTmp, PDO::PARAM_INT);
+                $requete2 -> execute();
+
+                if($conn != null){
+                     echo "    <script>
+                               /*alert(\"Topic ajouté avec succès\");*/
+                              </script>";
+                } else {
+                    echo "    <script>
+                               alert(\"Problème de connexion avec la bdd\");
+                              </script>";
+                }
 
 
 
@@ -79,7 +92,7 @@
                 </div>
                 <div class="form-group">
                     <label for="InputTextTopic" style="color:white;">Commentaire</label>
-                    <textarea class="form-control" name="nTextTopic" id="InputTextTopic" rows="3"> </textarea>
+                    <textarea class="form-control" name="nTextArea" id="InputTextTopic" rows="3"> </textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
