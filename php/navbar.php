@@ -32,7 +32,7 @@
                                     break;
                                     case 2:
                                          ?>
-                                        <a class="nav-link" style="color:#1ee653;">
+                                        <a class="nav-link" id="btnModo" href="displayAdmin.php" style="color:#1ee653;">
                                         <?php
                                         echo "Moderateur";
                                     break;

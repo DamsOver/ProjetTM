@@ -22,34 +22,24 @@ session_start();
 include("php/navbar.php");
 ?>
 
-<div class="container-fluid" id = themeUser style="color:white;">
-    <div class="row">
-        <div class="col-6">
-            <h2>Liste des thèmes</h2>
-        </div>
-        <div class="col-6">
-            <h2>Liste des Utilisateurs</h2>
-        </div>
-    </div>
-</div>
+<?php
+include("php/getUsers.php");
+?>
+<?php
+include("php/getThemes.php");
+?>
 <div class="container.fluid" id = themeUser>
     <div class="row">
-        <div class="col-6">
-            <ul class="list-group">
-                <?php
-                    include("php/getThemes.php");
-                ?>
-            </ul>
+        <div class="col-6" style="color:white;">
         </div>
-        <div class="col-6">
-            <div class="list-group">
-                <?php
-                    include("php/getUsers.php");
-                ?>
-            </div>
+        <div class="col-6 pt-04 pb-4" style="color:white;">
+            <?php
+            include("php/getCatAdmin.php");
+            ?>
         </div>
     </div>
 </div>
+
 
 
 
