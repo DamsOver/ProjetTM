@@ -23,7 +23,6 @@
 
         <?php
             require('php/config.php');
-
             if (isset($_POST['user'])){
                 $username = stripslashes($_REQUEST['user']);
                 $password = stripslashes($_REQUEST['password']);
@@ -42,9 +41,7 @@
                         $test = true;
                     }
                 }
-
                 $requete2 -> closeCursor();
-
                 if($test == true) {
                     header("Location: index.php");
                 } else {
@@ -60,7 +57,7 @@
             <input type="submit" name="send" value="Login">
         </form>
 
-        <?php if (! empty($message)) { ?>
+        <?php if (!empty($message)) { ?>
             <p class="errorMessage"><?php echo $message; ?></p>
         <?php } ?>
 
