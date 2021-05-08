@@ -35,14 +35,42 @@ if(isset($_SESSION['grade'])){
 
 
     if($req1 -> rowCount() > 0){
-        while($data1 = $req1 -> fetch(PDO::FETCH_ASSOC)){
-            $PseudoTmp = $data1['pseudo'];
-            $MailTmp = $data1['mail'];
-            $select .= '<li class="list-group-item">' .$PseudoTmp .'</br>'.$MailTmp .'
+        if($sess==3){
+            $i1=0;
+            while($data1 = $req1 -> fetch(PDO::FETCH_ASSOC)){
+                $PseudoTmp = $data1['pseudo'];
+                $MailTmp = $data1['mail'];
+
+                $select .= '<li class="list-group-item ">
+                                <div class="row">
+                                    <div class="col-6 pb-4">
+                                        ' .$PseudoTmp .'        mail : '.$MailTmp .'
+                                    </div>
+                                    <div class="col-6 pb-4">
+                                        <select class="form-control" name="'.$i1 .'">
+                                            <option>Utilisateur</option>
+                                            <option>Modérateur</option>
+                                            <option>Administrateur</option>
+                                        </select>  
+                                    </div>
+                                </div>
+                                <form method ="post" class="form-check-inline" style="float:right;">
+                                    <button style="float:middle;" name="suppr" value='.$MailTmp.'> supprimer </button>
+                                </form>
+                            </li>
+                ';
+                $i1+=1;
+            }
+        }else{
+            while($data1 = $req1 -> fetch(PDO::FETCH_ASSOC)){
+                $PseudoTmp = $data1['pseudo'];
+                $MailTmp = $data1['mail'];
+                $select .= '<li class="list-group-item">' .$PseudoTmp .'</br>'.$MailTmp .'
                     <form method ="post" class="form-check-inline" style="float:right;">
                         <button style="float:right;" name="suppr" value='.$MailTmp.'> supprimer </button>
                     </form>
                 </li>';
+            }
         }
     }
 
