@@ -1,5 +1,5 @@
 <?php
-session_start();
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -17,13 +17,12 @@ session_start();
         <title>Topics</title>
     </head>
     <body>
-
         <?php
             include("php/navbar.php");
         ?>
 
         <?php
-        include("php/adminTitreListe.php");
+            include("php/adminTitreListe.php");
         ?>
 
         <?php
@@ -53,7 +52,6 @@ session_start();
         <script src="js/bootstrap.min.js" crossorigin="anonymous"></script>
         <script src="js/goTopic.js" crossorigin="anonymous"></script>
 
-
         <script>
             $(document).ready(function() {
                 $(document).on('click', '#MainListGroupUser select', function(e) {
@@ -77,17 +75,15 @@ session_start();
         <script>
             $(document).ready(function() {
                 $(document).on('click','#MainListGroupTheme button' , function(e) {
-
                     let tmpTheme = e.target.value;
                     $.ajax({
-                        url: "php/SupprTheme.php",
+                        url: "php/supprTheme.php",
                         type: "POST",
                         data: {
                             tmpTheme: tmpTheme
                         },
                         cache: false,
                         success: function(dataResult){
-
                             $.ajax({
                                 url: "php/getThemes.php",
                                 type: "POST",
@@ -107,17 +103,15 @@ session_start();
         <script>
             $(document).ready(function() {
                 $(document).on('click','#MainListGroupUser button' , function(e) {
-
                     let tmpUserMail = e.target.value;
                     $.ajax({
-                        url: "php/SupprUser.php",
+                        url: "php/supprUser.php",
                         type: "POST",
                         data: {
                             tmpUserMail: tmpUserMail
                         },
                         cache: false,
                         success: function(dataResult){
-
                             $.ajax({
                                 url: "php/getUsers.php",
                                 type: "POST",
@@ -125,12 +119,42 @@ session_start();
                                 },
                                 cache: false,
                                 success: function(dataResult2){
-                                    /*var dataResult2 = JSON.parse(dataResult2);*/
                                     $('#MainListGroupUser').html(dataResult2);
                                 }
                             });
                         }
                     });
+                });
+            });
+        </script>
+        <script>
+            $(document).ready(function() {
+                $(document).on('click','#MainAjout button' , function(e) {
+                    let tmpTheme = document.getElementById("nTheme").value;
+                    let tmpCategorie = document.getElementById("listCat")[document.getElementById("listCat").selectedIndex].text;
+                    if(tmpTheme != "") {
+                        $.ajax({
+                            url: "php/ajouterTheme.php",
+                            type: "POST",
+                            data: {
+                                tmpTheme: tmpTheme,
+                                tmpCategorie: tmpCategorie
+                            },
+                            cache: false,
+                            success: function(dataResult){
+                                $.ajax({
+                                    url: "php/getThemes.php",
+                                    type: "POST",
+                                    data: {
+                                    },
+                                    cache: false,
+                                    success: function(dataResult2){
+                                        $('#MainListGroupTheme').html(dataResult2);
+                                    }
+                                });
+                            }
+                        });
+                    }
                 });
             });
         </script>
