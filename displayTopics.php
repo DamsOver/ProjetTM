@@ -143,7 +143,7 @@
                                 cache: false,
                                 success: function(dataResult2){
                                     /*var dataResult2 = JSON.parse(dataResult2);*/
-                                    $('#coms').html(dataResult2);
+                                    $('#topics').html(dataResult2);
                                     $("#topicAjoute").show();
                                     setTimeout(function() { $("#topicAjoute").hide(); }, 5000);
                                 }
