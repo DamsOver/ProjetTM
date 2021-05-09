@@ -2,36 +2,6 @@
     session_start();
 ?>
 
-<?php
-    /*require('php/config.php');
-    if (isset($_REQUEST['nTextArea'])) {
-        if(isset($_SESSION['mail'])) {
-            $vTextArea = stripslashes($_REQUEST['nTextArea']);
-            if($vTextArea != "") {
-                $vMail = $_SESSION['mail'];
-                $vIdTopic = $_GET['gIdTopic'];
-
-                //requéte SQL + mot de passe crypté
-                $requete = $conn->prepare("INSERT into `commentaire` (texte, dateajoutcom, mailCom, idtopic)
-                                            VALUES (:vTextArea, now(), :vMail, :vIdTopic)");
-
-                $requete -> bindValue(':vTextArea', $vTextArea, PDO::PARAM_STR);
-                $requete -> bindValue(':vMail', $vMail, PDO::PARAM_STR);
-                $requete -> bindValue(':vIdTopic', $vIdTopic, PDO::PARAM_INT);
-
-                $requete -> execute();
-
-                $vTextArea = "";
-            }
-        } else {
-            echo "<script>
-                      alert(\"Vous devez être connecté pour pouvoir répondre à une conversation.\");
-                      window.location.href = 'login.php';
-                  </script>";
-        }
-    }*/
-
-?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -85,7 +55,7 @@
 
         <script src="js/goTopic.js" crossorigin="anonymous"></script>
         <script src="js/goCommentaire.js" crossorigin="anonymous"></script>
-
+         <?php echo "test"; ?>;
         <script>
         $(document).ready(function() {
             // Search url variable
@@ -93,6 +63,50 @@
             let urlParams = new URLSearchParams(queryString);
             let vIdTopic = urlParams.get('gIdTopic');
             let vTopic = urlParams.get('gTopic');
+
+            $.ajax({
+                url: "php/getGrade.php",
+                type: "POST",
+                cache: false,
+                success: function(dataResult3){
+                    let vGrade = dataResult3;
+                    if(vGrade=='2' || vGrade=='3') {
+
+                        $(document).on('click', '#btnDelCom', function(e) {
+                            /*let tmpRole = e.target[e.target.selectedIndex].text;
+                            let tmpMailUser =e.target.value;*/
+                            let idCom = e.target.value;
+                            $.ajax({
+                                url: "php/supprCom.php",
+                                type: "POST",
+                                data: {
+                                    idCom: idCom
+                                },
+                                cache: false,
+                                success: function(dataResult){
+
+                                    $.ajax({
+                                        url: "php/getCommentaires.php",
+                                        type: "POST",
+                                        data: {
+                                            idTopic: vIdTopic,
+                                            topic:vTopic
+                                        },
+                                        cache: false,
+                                        success: function(dataResult2){
+                                            $('#comsCom').html(dataResult2);
+                                        }
+                                    });
+
+                                }
+                            });
+                        });
+
+                    }
+
+                }
+            });
+
             $.ajax({
                 url: "php/getCommentaires.php",
                 type: "POST",
@@ -102,8 +116,6 @@
                 },
                 cache: false,
                 success: function(dataResult2){
-                    console.log(dataResult2);
-                    /*var dataResult2 = JSON.parse(dataResult2);*/
                     $('#comsCom').html(dataResult2);
                 }
             });
@@ -131,8 +143,6 @@
                                 },
                                 cache: false,
                                 success: function(dataResult2){
-                                    console.log(dataResult2);
-                                    /*var dataResult2 = JSON.parse(dataResult2);*/
                                     $('#comsCom').html(dataResult2);
                                 }
                             });

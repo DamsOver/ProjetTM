@@ -24,7 +24,7 @@
 
         <section id ="mainSection">
             <div class ="grid-wrapper">
-                <div class ="comments" id="coms"></div>
+                <div class ="comments" id="topics"></div>
 
                 <div class="new-comment">
                     <div class="titre h4 ml-1 pt-4 pl-4 pr-4">Votre Topic :<span id="topicAjoute" style="background-color:#2abf52;color: white;padding: 5px;margin-left: 10px;border-radius: 10px;display:none;">Topic ajouté</span></div>
@@ -58,11 +58,13 @@
 
         <script>
         $(document).ready(function() {
+
             // Search url variable
-                let queryString = window.location.search;
-                let urlParams = new URLSearchParams(queryString);
-                let vTheme = urlParams.get('gTheme');
-             $.ajax({
+            let queryString = window.location.search;
+            let urlParams = new URLSearchParams(queryString);
+            let vTheme = urlParams.get('gTheme');
+
+            $.ajax({
                  url: "php/getTopics.php",
                     type: "POST",
                     data: {
@@ -70,9 +72,52 @@
                     },
                     cache: false,
                     success: function(dataResult2){
-                        $('#coms').html(dataResult2);
+                        $('#topics').html(dataResult2);
                     }
                 });
+
+            $.ajax({
+                url: "php/getGrade.php",
+                type: "POST",
+                cache: false,
+                success: function(dataResult3){
+                    let vGrade = dataResult3;
+                    if(vGrade=='2' || vGrade=='3') {
+
+                        $(document).on('click', '#btnDelTopic', function(e) {
+                            /*let tmpRole = e.target[e.target.selectedIndex].text;
+                            let tmpMailUser =e.target.value;*/
+                            let idTopic = e.target.value;
+
+                            $.ajax({
+                                url: "php/supprTopic.php",
+                                type: "POST",
+                                data: {
+                                    idTopic: idTopic
+                                },
+                                cache: false,
+                                success: function(dataResult){
+                                    $.ajax({
+                                        url: "php/getTopics.php",
+                                        type: "POST",
+                                        data: {
+                                            theme: vTheme
+                                        },
+                                        cache: false,
+                                        success: function(dataResult2){
+                                            /*var dataResult2 = JSON.parse(dataResult2);*/
+                                            $('#topics').html(dataResult2);
+                                        }
+                                    });
+
+                                }
+                            });
+                        });
+
+                    }
+
+                }
+            });
 
             $('#butSubmitTopic').on('click', function() {
                 let vNomTopic = $('#InputNomTopic').val();
@@ -97,7 +142,6 @@
                                 },
                                 cache: false,
                                 success: function(dataResult2){
-                                    console.log(dataResult2);
                                     /*var dataResult2 = JSON.parse(dataResult2);*/
                                     $('#coms').html(dataResult2);
                                     $("#topicAjoute").show();
@@ -108,8 +152,6 @@
 
                         }
                     });
-
-
 
                 }
                 else{
