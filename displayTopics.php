@@ -32,14 +32,14 @@
         </section>
 
         <div class="container">
-            <form id="fupForm" action="" method="post">
+            <form id="formDisplayTopic" action="" method="post">
                 <div class="form-group">
                     <label for="InputNomTopic" style="color:white;">Nom du topic</label>
                     <input type="text" name="nTitreTopic" class="form-control" id="InputNomTopic" placeholder="Nom du topic">
                 </div>
                 <div class="form-group">
                     <label for="InputTextTopic" style="color:white;">Commentaire</label>
-                    <textarea class="form-control" name="nTextArea" id="InputTextTopic" rows="3"> </textarea>
+                    <textarea type="text" class="form-control" name="nTextArea" id="InputTextTopic" rows="3"> </textarea>
                 </div>
                 <button type="button" class="btn btn-primary" id="butSubmitTopic">Submit</button>
             </form>

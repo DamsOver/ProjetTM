@@ -38,7 +38,7 @@
         </section>
 
         <div class="container">
-            <form action="" method="post">
+            <form action="" method="post" id="formComm">
                 <div class="form-group">
                     <label for="InputTextTopic" style="color:white;">Repondre :</label>
                     <textarea name="nTextArea" class="form-control" id="InputTextCom" rows="3"></textarea>
