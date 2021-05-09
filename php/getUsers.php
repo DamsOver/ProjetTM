@@ -79,15 +79,6 @@ if(isset($_SESSION['grade'])){
         }
     }
 
-    /*if (isset($_POST['suppr'])) {
-        /*
-        $mailASup = $_POST['suppr'];
-        $req1 = $conn->prepare("delete from utilisateur where mail = '$mailASup'");
-        $req1 -> execute();
-        header("Location: displayAdmin.php");
-        echo ('passé dans la fonction');
-    }*/
-
     echo $select;
 }
 $conn = null;

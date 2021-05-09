@@ -134,5 +134,15 @@ session_start();
                 });
             });
         </script>
+        <script>
+            $(document).ready(function() {
+                $(document).on('click','#MainAjout button' , function(e) {
+                    alert("tmpRole");
+                    let tmpRole = e.target[e.target.selectedIndex].text;
+                    alert("tmpRole");
+
+                });
+            });
+        </script>
     </body>
 </html>

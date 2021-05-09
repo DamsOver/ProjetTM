@@ -8,13 +8,13 @@
         if($sess==3){
             $select = ' <h3>Ajout d\'un theme : </h3>
                     <form action="" method="post">
-                        <div class="form-group">
+                        <div class="form-group" id="MainAjout">
                             <label for="InputNomTopic" style="color:white;">Nom du thème</label>
                             <div class="row">
                                 <div class="col-6" style="color:white;">
                                     <input type="text" name="nTheme" class="form-control" id="InputNomTopic" placeholder="Nom du thème">
                                     </br>
-                                    <button type="Submit" name="ajout" class="btn btn-primary">Ajouter</button>
+                                    <button type="button" name="ajout" id="ajout" class="btn btn-primary">Ajouter</button>
                                 </div>
                                 <div class="col-6" style="color:white;">
                                     <select class="form-control" name ="selectCat">';
@@ -35,7 +35,7 @@
                         </div>
                     </form>';
         }
-
+/*
     if (isset($_POST['ajout'])&&!empty($_POST['nTheme'])) {
 
         $nomThemeTMP = stripslashes($_REQUEST['nTheme']);
@@ -51,7 +51,7 @@
         $req1 -> execute();
         header("Location: displayAdmin.php");
     }
-
+*/
     echo $select;
     }
     $conn = null;
