@@ -37,28 +37,27 @@
                                         <div class="col-sm pb-4" id="">
                                             <select class="form-control" id="' . $i1 . '" value ="ok">';
                     if($roleTmp==1){
-                        $select .= '              <option value="' . $MailTmp . '" selected="selected">Utilisateur</option>
-                                                <option value="' . $MailTmp . '">Modérateur</option>
-                                                <option value="' . $MailTmp . '">Administrateur</option>';
+                        $select .= '<option value="' . $MailTmp . '" selected="selected">Utilisateur</option>
+                                    <option value="' . $MailTmp . '">Modérateur</option>
+                                    <option value="' . $MailTmp . '">Administrateur</option>';
 
                     } elseif($roleTmp == 2){
-                        $select .= '              <option value="' . $MailTmp . '">Utilisateur</option>
-                                                <option value="' . $MailTmp . '" selected="selected">Modérateur</option>
-                                                <option value="' . $MailTmp . '">Administrateur</option>';
+                        $select .= '<option value="' . $MailTmp . '">Utilisateur</option>
+                                    <option value="' . $MailTmp . '" selected="selected">Modérateur</option>
+                                    <option value="' . $MailTmp . '">Administrateur</option>';
                     }
                     else{
-                        $select .= '              <option value="' . $MailTmp . '">Utilisateur</option>
-                                                <option value="' . $MailTmp . '">Modérateur</option>
-                                                <option value="' . $MailTmp . '" selected="selected">Administrateur</option>';
+                        $select .= '<option value="' . $MailTmp . '">Utilisateur</option>
+                                    <option value="' . $MailTmp . '">Modérateur</option>
+                                    <option value="' . $MailTmp . '" selected="selected">Administrateur</option>';
                     }
-                    $select .= '              </select>  
-                                        </div>
+                    $select .= '        </select>  
                                     </div>
-                                    <form method ="post" class="form-check-inline" style="float:right;">
-                                        <button type="button" style="float:middle;" name="suppr" value=' . $MailTmp . '> supprimer </button>
-                                    </form>
-                                </li>
-                    ';
+                                </div>
+                                <form method ="post" class="form-check-inline" style="float:right;">
+                                    <button type="button" style="float:middle;" name="suppr" value=' . $MailTmp . '> supprimer </button>
+                                </form>
+                                </li>';
                     $i1 += 1;
                 }
             }else{
@@ -66,13 +65,15 @@
                     $PseudoTmp = $data1['pseudo'];
                     $MailTmp = $data1['mail'];
                     $select .= '<li class="list-group-item">' . $PseudoTmp . '</br>' . $MailTmp . '
-                        <form method ="post" class="form-check-inline" style="float:right;">
-                            <button type="button" style="float:right;" name="suppr" value=' . $MailTmp . '> supprimer </button>
-                        </form>
-                    </li>';
+                                    <form method ="post" class="form-check-inline" style="float:right;">
+                                        <button type="button" style="float:right;" name="suppr" value=' . $MailTmp . '> supprimer </button>
+                                    </form>
+                                </li>
+                    ';
                 }
             }
         }
+        $select .= '</ul></div>';
         echo $select;
     }
     $conn = null;

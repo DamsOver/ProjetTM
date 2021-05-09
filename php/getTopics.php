@@ -42,19 +42,6 @@
     }
     $select .= "</div>";
 
-   /* if(isset($_POST['supprimerTopic'])) {
-        $IdTopic = $_POST['supprimerTopic'];
-        if($_SESSION['grade'] >= 2) {
-            $req2 = $conn -> prepare("delete from topic where idtopic = '$IdTopic'");
-            $req2 -> execute();
-        } else {
-            echo "<script>
-                      alert(\"Vous n'êtes pas autorisé à supprimer ce topic.\");
-                  </script>";
-        }
-        header("Location: displayTopics.php?gTheme=" . $theme);
-    }*/
-
     echo $select;
     $conn = null;
 ?>
