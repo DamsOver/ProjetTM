@@ -8,6 +8,8 @@
     include("config.php");
     $topic = $_POST['topic'];
     $idTopic = $_POST['idTopic'];
+
+    // Récupère le texte, la date, le pseudo, l'id des commentaires correspondant au topic
     $req1 = $conn -> prepare("select commentaire.texte, commentaire.dateajoutcom, utilisateur.pseudo, commentaire.idcom 
                                     from commentaire left join topic using(idtopic) left join utilisateur 
                                     on commentaire.mailcom=utilisateur.mail where idtopic ='$idTopic' order by dateajoutcom");
@@ -48,6 +50,7 @@
                         ';
 
         if(isset($_SESSION['grade'])){
+            // Si modérateur ou administrateur
             if($_SESSION['grade'] >= 2) {
                 $select .= '<form  method ="post" class="form-check-inline" style="float:right;">
                             <button id="btnDelCom" type="button" style="float:right;" name="supprimer" value=' . $IdCom . '> Supprimer </button>

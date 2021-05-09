@@ -11,10 +11,12 @@
         $mail = $_SESSION['mail'];
         $Theme ='';
 
+        // Si admin alors récupère la liste des utilisateurs, modérateur et administrateur
+        // Sinon si moderateur alors récupère la liste des utilisateurs
         if($sess == 3){
             $req1 = $conn->prepare("select * from utilisateur where mail != '$mail'");
             $Theme ='Liste des thèmes';
-        }else{
+        } else {
             $req1 = $conn->prepare("select * from utilisateur where mail != '$mail' and role = 1 ");
         }
 

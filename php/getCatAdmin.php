@@ -1,10 +1,13 @@
 <?php
     include("php/config.php");
+
+    // Si l'utilisateur est connecté
     if(isset($_SESSION['grade'])){
         $sess = $_SESSION['grade'];
         $mail = $_SESSION['mail'];
         $select = '';
 
+        // Si administrateur
         if($sess==3){
             $select = ' <h3>Ajout d\'un theme : </h3>
                     <form action="" method="post">
@@ -19,6 +22,7 @@
                                 <div class="col-6" style="color:white;">
                                     <select id="listCat" class="form-control" name ="selectCat">';
 
+            // Récupère les catégories
             $req1 = $conn->prepare("select * from categorie");
             $req1 -> execute();
 

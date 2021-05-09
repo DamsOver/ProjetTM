@@ -8,6 +8,7 @@
         $sess = $_SESSION['grade'];
         $select = '<div class="list-group">';
 
+        // Si administrateur
         if($sess == 3){
             $req1 = $conn->prepare("select * from theme");
             $req1 -> execute();

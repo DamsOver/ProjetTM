@@ -10,8 +10,7 @@
     $categorie = $_POST["tmpCategorie"];
     $mail = $_SESSION['mail'];
 
-    /*$reqAjoutTheme = $conn -> prepare("INSERT into `theme` (nomtheme, mailTheme, nomcat)
-            VALUES (:theme,:mail,:categorie)");*/
+    // Ajoute un theme dans la bdd
     $reqAjoutTheme = $conn -> prepare("INSERT into theme(nomtheme, mailTheme, nomcat)
             VALUES ('$theme','$mail','$categorie')");
 

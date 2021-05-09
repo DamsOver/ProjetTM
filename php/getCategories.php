@@ -1,5 +1,6 @@
 <?php
     include("config.php");
+    // Récupère les catégories
     $req1 = $conn -> prepare("select * from categorie");
     $req1 -> execute();
 
