@@ -13,7 +13,6 @@
 
         <link rel="stylesheet" type="text/css" href="css/index.css">
         <link rel="stylesheet" type="text/css" href="css/admin.css">
-        <script type="text/javascript" src="js/index.js"></script>
         <title>Topics</title>
     </head>
     <body>
@@ -49,6 +48,6 @@
         <script src="js/popper.min.js" crossorigin="anonymous"></script>
         <script src="js/bootstrap.min.js" crossorigin="anonymous"></script>
         <script src="js/goTopic.js" crossorigin="anonymous"></script>
-        <script src="js/admin.js" crossorigin="anonymous"></script>
+        <script src="js/ajaxAdmin.js" crossorigin="anonymous"></script>
     </body>
 </html>

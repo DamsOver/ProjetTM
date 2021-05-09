@@ -8,7 +8,6 @@
         <link rel="stylesheet" href="css/bootstrap.min.css" crossorigin="anonymous">
 
         <link rel="stylesheet" type="text/css" href="css/index.css">
-        <script type="text/javascript" src="js/index.js"></script>
         <title>Topics</title>
         <style type="text/css">
             /* Set the size of the div element that contains the map */

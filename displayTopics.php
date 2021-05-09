@@ -14,7 +14,6 @@
         <link rel="stylesheet" type="text/css" href="css/index.css">
         <link rel="stylesheet" type="text/css" href="css/topic.css">
         <link rel="stylesheet" type="text/css" href="css/commentaires.css">
-        <script type="text/javascript" src="js/index.js"></script>
         <title>Topics</title>
     </head>
     <body>
@@ -53,6 +52,6 @@
 
         <script src="js/goTopic.js" crossorigin="anonymous"></script>
         <script src="js/goCommentaire.js" crossorigin="anonymous"></script>
-        <script src="js/topic.js" crossorigin="anonymous"></script>
+        <script src="js/ajaxTopic.js" crossorigin="anonymous"></script>
     </body>
 </html>
