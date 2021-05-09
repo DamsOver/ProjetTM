@@ -1,7 +1,11 @@
 <?php
-    include("php/config.php");
-    $topic = $_GET['gTopic'];
-    $idTopic = $_GET['gIdTopic'];
+    session_start();
+?>
+
+<?php
+    include("config.php");
+    $topic = $_POST['topic'];
+    $idTopic = $_POST['idTopic'];
     $req1 = $conn -> prepare("select commentaire.texte, commentaire.dateajoutcom, utilisateur.pseudo, commentaire.idcom 
                                     from commentaire left join topic using(idtopic) left join utilisateur 
                                     on commentaire.mailcom=utilisateur.mail where idtopic ='$idTopic' order by dateajoutcom");
@@ -39,27 +43,22 @@
                                         <div class ="pl-3 pt-1 pr-3">' . $DateComTmp .'</div>
                                     </footer>
                                     <a href="php/like.php?gIdCom=' . $IdCom . '&gTopic=' . $topic . '&gIdTopic='.$idTopic.'">Likes ' . $NbLikes . '</a>
-                                    <form  method ="post" class="form-check-inline" style="float:right;">
-                                        <button style="float:right;" name="supprimer" value=' . $IdCom . '> Supprimer </button>
-                                    </form>
-                                </div>
+                        ';
+
+        if(isset($_SESSION['grade'])){
+            if($_SESSION['grade'] >= 2) {
+                $select .= '<form  method ="post" class="form-check-inline" style="float:right;">
+                            <button id="btnDelCom" type="button" style="float:right;" name="supprimer" value=' . $IdCom . '> Supprimer </button>
+                        </form>';
+            }
+        }
+
+            $select .= '</div>
                             </div>
                         </div>';
         }
     }
 
-    if (isset($_POST['supprimer'])) {
-        $IdCom = $_POST['supprimer'];
-        if($_SESSION['grade'] >= 2) {
-            $req1 = $conn->prepare("delete from commentaire where idcom = '$IdCom'");
-            $req1 -> execute();
-        } else {
-            echo "<script>
-                      alert(\"Vous n'êtes pas autorisé à supprimer ce commentaire.\");
-                  </scrypt>";
-        }
-        header("Location: displayCommentaires.php?gTopic=" . $topic . "&gIdTopic=" . $idTopic);
-    }
     echo $select;
     $conn = null;
 ?>

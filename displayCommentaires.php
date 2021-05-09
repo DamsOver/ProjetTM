@@ -2,35 +2,6 @@
     session_start();
 ?>
 
-<?php
-    require('php/config.php');
-    if (isset($_REQUEST['nTextArea'])) {
-        if(isset($_SESSION['mail'])) {
-            $vTextArea = stripslashes($_REQUEST['nTextArea']);
-            if($vTextArea != "") {
-                $vMail = $_SESSION['mail'];
-                $vIdTopic = $_GET['gIdTopic'];
-
-                //requéte SQL + mot de passe crypté
-                $requete = $conn->prepare("INSERT into `commentaire` (texte, dateajoutcom, mailCom, idtopic)
-                                            VALUES (:vTextArea, now(), :vMail, :vIdTopic)");
-
-                $requete -> bindValue(':vTextArea', $vTextArea, PDO::PARAM_STR);
-                $requete -> bindValue(':vMail', $vMail, PDO::PARAM_STR);
-                $requete -> bindValue(':vIdTopic', $vIdTopic, PDO::PARAM_INT);
-
-                $requete -> execute();
-
-                $vTextArea = "";
-            }
-        } else {
-            echo "<script>
-                      alert(\"Vous devez être connecté pour pouvoir répondre à une conversation.\");
-                      window.location.href = 'login.php';
-                  </script>";
-        }
-    }
-?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -40,11 +11,9 @@
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="css/bootstrap.min.css" crossorigin="anonymous">
-
         <link rel="stylesheet" type="text/css" href="css/index.css">
-
+        <link rel="stylesheet" type="text/css" href="css/topic.css">
         <link rel="stylesheet" type="text/css" href="css/commentaires.css">
-
         <script type="text/javascript" src="js/index.js"></script>
         <title></title>
     </head>
@@ -60,11 +29,7 @@
                         echo $_GET['gTopic'];
                     ?>
                 </div>
-                <div class ="comments">
-                    <?php
-                        include("php/getCommentaires.php");
-                    ?>
-                </div>
+                <div class ="comments" id="comsCom"></div>
                 <div class="new-comment">
                     <div class="titre h4 ml-1 pt-4 pl-4 pr-4">
                         Votre commentaire :
@@ -77,9 +42,9 @@
             <form action="" method="post">
                 <div class="form-group">
                     <label for="InputTextTopic" style="color:white;">Repondre :</label>
-                    <textarea name="nTextArea" class="form-control" id="InputTextTopic" rows="3"></textarea>
+                    <textarea name="nTextArea" class="form-control" id="InputTextCom" rows="3"></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="button" class="btn btn-primary" id="butSubmitCom">Submit</button>
             </form>
         </div>
 
@@ -90,5 +55,105 @@
 
         <script src="js/goTopic.js" crossorigin="anonymous"></script>
         <script src="js/goCommentaire.js" crossorigin="anonymous"></script>
+        <script>
+        $(document).ready(function() {
+            // Search url variable
+            let queryString = window.location.search;
+            let urlParams = new URLSearchParams(queryString);
+            let vIdTopic = urlParams.get('gIdTopic');
+            let vTopic = urlParams.get('gTopic');
+
+            $.ajax({
+                url: "php/getGrade.php",
+                type: "POST",
+                cache: false,
+                success: function(dataResult3){
+                    let vGrade = dataResult3;
+                    if(vGrade=='2' || vGrade=='3') {
+
+                        $(document).on('click', '#btnDelCom', function(e) {
+                            /*let tmpRole = e.target[e.target.selectedIndex].text;
+                            let tmpMailUser =e.target.value;*/
+                            let idCom = e.target.value;
+                            $.ajax({
+                                url: "php/supprCom.php",
+                                type: "POST",
+                                data: {
+                                    idCom: idCom
+                                },
+                                cache: false,
+                                success: function(dataResult){
+
+                                    $.ajax({
+                                        url: "php/getCommentaires.php",
+                                        type: "POST",
+                                        data: {
+                                            idTopic: vIdTopic,
+                                            topic:vTopic
+                                        },
+                                        cache: false,
+                                        success: function(dataResult2){
+                                            $('#comsCom').html(dataResult2);
+                                        }
+                                    });
+
+                                }
+                            });
+                        });
+
+                    }
+
+                }
+            });
+
+            $.ajax({
+                url: "php/getCommentaires.php",
+                type: "POST",
+                data: {
+                    idTopic: vIdTopic,
+                    topic:vTopic
+                },
+                cache: false,
+                success: function(dataResult2){
+                    $('#comsCom').html(dataResult2);
+                }
+            });
+
+            $('#butSubmitCom').on('click', function() {
+                let vTextCom = $('#InputTextCom').val();
+
+
+                if(vTextCom!="" && vIdTopic!=""){
+                    $.ajax({
+                        url: "php/saveCom.php",
+                        type: "POST",
+                        data: {
+                            textCom: vTextCom,
+                            idTopic: vIdTopic
+                        },
+                        cache: false,
+                        success: function(dataResult){
+                            $.ajax({
+                                url: "php/getCommentaires.php",
+                                type: "POST",
+                                data: {
+                                    idTopic: vIdTopic,
+                                    topic:vTopic
+                                },
+                                cache: false,
+                                success: function(dataResult2){
+                                    $('#comsCom').html(dataResult2);
+                                }
+                            });
+                        }
+                    });
+
+                }
+                else{
+                    alert('Please fill all the field !');
+                }
+            });
+        });
+        </script>
     </body>
 </html>

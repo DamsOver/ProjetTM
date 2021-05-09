@@ -1,12 +1,11 @@
 <?php
     include("php/config.php");
-
     $req1 = $conn -> prepare("select * from categorie");
     $req1 -> execute();
 
     $select = '';
 
-    if($req1 -> rowCount()>0){
+    if($req1 -> rowCount() > 0){
         while($data1 = $req1 -> fetch(PDO::FETCH_ASSOC)){
             $nomCatTmp = $data1['nomcat'];
             $req2 = $conn->prepare("select nomtheme from theme where nomcat = '$nomCatTmp'");
