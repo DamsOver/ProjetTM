@@ -60,7 +60,6 @@
 
         <link rel="stylesheet" type="text/css" href="css/index.css">
         <link rel="stylesheet" type="text/css" href="css/topic.css">
-        <link rel="stylesheet" type="text/css" href="css/commentaires.css">
         <script type="text/javascript" src="js/index.js"></script>
         <title>Topics</title>
     </head>
@@ -93,7 +92,7 @@
                     <label for="InputTextTopic" style="color:white;">Commentaire</label>
                     <textarea class="form-control" name="nTextArea" id="InputTextTopic" rows="3"> </textarea>
                 </div>
-                <button type="button" class="btn btn-primary" id="butSubmit">Submit</button>
+                <button type="button" class="btn btn-primary" id="butSubmitTopic">Submit</button>
             </form>
         </div>
 
@@ -109,8 +108,7 @@
 
         <script>
         $(document).ready(function() {
-            $('#butSubmit').on('click', function() {
-                /*$("#butSubmit").attr("disabled", "disabled");*/
+            $('#butSubmitTopic').on('click', function() {
                 let vNomTopic = $('#InputNomTopic').val();
                 let vTextTopic = $('#InputTextTopic').val();
                 // Search url variable

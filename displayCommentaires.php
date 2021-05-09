@@ -3,7 +3,7 @@
 ?>
 
 <?php
-    require('php/config.php');
+    /*require('php/config.php');
     if (isset($_REQUEST['nTextArea'])) {
         if(isset($_SESSION['mail'])) {
             $vTextArea = stripslashes($_REQUEST['nTextArea']);
@@ -29,7 +29,8 @@
                       window.location.href = 'login.php';
                   </script>";
         }
-    }
+    }*/
+
 ?>
 
 <!DOCTYPE html>
@@ -40,11 +41,8 @@
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="css/bootstrap.min.css" crossorigin="anonymous">
-
         <link rel="stylesheet" type="text/css" href="css/index.css">
-
         <link rel="stylesheet" type="text/css" href="css/commentaires.css">
-
         <script type="text/javascript" src="js/index.js"></script>
         <title></title>
     </head>
@@ -60,7 +58,7 @@
                         echo $_GET['gTopic'];
                     ?>
                 </div>
-                <div class ="comments">
+                <div class ="comments" id="comsCom">
                     <?php
                         include("php/getCommentaires.php");
                     ?>
@@ -77,9 +75,9 @@
             <form action="" method="post">
                 <div class="form-group">
                     <label for="InputTextTopic" style="color:white;">Repondre :</label>
-                    <textarea name="nTextArea" class="form-control" id="InputTextTopic" rows="3"></textarea>
+                    <textarea name="nTextArea" class="form-control" id="InputTextCom" rows="3"></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="button" class="btn btn-primary" id="butSubmitCom">Submit</button>
             </form>
         </div>
 
@@ -90,5 +88,50 @@
 
         <script src="js/goTopic.js" crossorigin="anonymous"></script>
         <script src="js/goCommentaire.js" crossorigin="anonymous"></script>
+
+        <script>
+        $(document).ready(function() {
+            $('#butSubmitCom').on('click', function() {
+                let vTextCom = $('#InputTextCom').val();
+                // Search url variable
+                let queryString = window.location.search;
+                let urlParams = new URLSearchParams(queryString);
+                let vIdTopic = urlParams.get('gIdTopic');
+                let vTopic = urlParams.get('gTopic');
+
+                if(vTextCom!="" && vIdTopic!=""){
+                    $.ajax({
+                        url: "php/saveCom.php",
+                        type: "POST",
+                        data: {
+                            textCom: vTextCom,
+                            idTopic: vIdTopic
+                        },
+                        cache: false,
+                        success: function(dataResult){
+                            $.ajax({
+                                url: "php/getCommentaires2.php",
+                                type: "POST",
+                                data: {
+                                    idTopic: vIdTopic,
+                                    topic:vTopic
+                                },
+                                cache: false,
+                                success: function(dataResult2){
+                                    console.log(dataResult2);
+                                    /*var dataResult2 = JSON.parse(dataResult2);*/
+                                    $('#comsCom').html(dataResult2);
+                                }
+                            });
+                        }
+                    });
+
+                }
+                else{
+                    alert('Please fill all the field !');
+                }
+            });
+        });
+        </script>
     </body>
 </html>
