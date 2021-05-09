@@ -2,13 +2,12 @@
     if(session_status()===PHP_SESSION_NONE){
         session_start();
     }
+
     include("config.php");
 
     $id = $_POST['idCom'];
     $mail = $_POST['mail'];
     $NbLikes = 0;
-
-
 
     $req2 = $conn -> prepare("select commentaire.idcom, count(*) from commentaire join likecom using(idcom) group by idcom");
     $req2 -> execute();

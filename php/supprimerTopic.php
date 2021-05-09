@@ -1,5 +1,8 @@
 <?php
-    session_start();
+    if(session_status() === PHP_SESSION_NONE){
+        session_start();
+    }
+
     include "config.php";
     $IdTopic=$_POST['idTopic'];
     echo $IdTopic;

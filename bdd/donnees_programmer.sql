@@ -6,9 +6,9 @@ insert into utilisateur(mail, pseudo, motDePasse, role) values ('florian@me.com'
 */
 
 update utilisateur set role = '3' where mail = "damien@me.com";
-update utilisateur set role = '2' where mail = "martin@me.com";
-update utilisateur set role = '1' where mail = "florian@me.com";
-update utilisateur set role = '1' where mail = "floran@me.com";
+update utilisateur set role = '3' where mail = "martin@me.com";
+update utilisateur set role = '3' where mail = "florian@me.com";
+update utilisateur set role = '3' where mail = "floran@me.com";
 
 insert into categorie(nomcat) values ('Jeux Video');
 insert into categorie(nomcat) values ('Pays');
@@ -69,7 +69,7 @@ insert into commentaire(texte, dateajoutcom, mailcom, idtopic) values ('C est to
 
 insert into topic(nomtopic, mailtopic, nomtheme, dateajouttopic) values ('Quel est la particularité du C ?', 'floran@me.com','C', '2021-04-26 12:00:00');
 insert into topic(nomtopic, mailtopic, nomtheme, dateajouttopic) values ('C ou D ?', 'damien@me.com','C', '2021-04-26 12:00:00');
-insert into topic(nomtopic, mailtopic, nomtheme, dateajouttopic) values ('Les principes de POO sont importants pour faire du java ?', 'damien@me.com','Java', '2021-04-26 12:00:00');
+insert into topic(nomtopic, mailtopic, nomtheme, dateajouttopic) values ('Les principes de POO ?', 'damien@me.com','Java', '2021-04-26 12:00:00');
 insert into topic(nomtopic, mailtopic, nomtheme, dateajouttopic) values ('Un rapport avec le serpent ?', 'damien@me.com','Python', '2021-04-26 12:00:00');
 
 insert into commentaire(texte, dateajoutcom, mailcom, idtopic) values ('Du coup, je commence le C et je me demande si il y a quelque chose de particulier à savoir comparé à d autres langages', '2021-04-26 12:00:00','floran@me.com', '10');

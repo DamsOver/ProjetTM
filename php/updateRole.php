@@ -1,5 +1,8 @@
 <?php
-    session_start();
+    if(session_status() === PHP_SESSION_NONE){
+        session_start();
+    }
+
     include "config.php";
     $vMailUser=$_POST['mailUser'];
     $vRole=$_POST['role'];
