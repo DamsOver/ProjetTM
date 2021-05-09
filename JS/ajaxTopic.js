@@ -62,7 +62,7 @@ $(document).ready(function() {
         success: function(dataResultGrade2) {
             let vGrade = dataResultGrade2;
             if(vGrade == '1' || vGrade == '2' || vGrade == '3') {
-                $('#butSubmitTopic').on('click', function() {
+                $(document).on('click', '#butSubmitTopic', function(e) {
                     let vNomTopic = $('#InputNomTopic').val();
                     let vTextTopic = document.getElementById("InputTextTopic").value;
                     if(vNomTopic != "" && vTextTopic != "" && vTheme != ""){

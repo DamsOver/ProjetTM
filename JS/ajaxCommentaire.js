@@ -91,7 +91,7 @@ $(document).ready(function() {
         }
     });
 
-    $('#butSubmitCom').on('click', function() {
+    $(document).on('click', '#butSubmitCom', function(e) {
         let vTextCom = $('#InputTextCom').val();
         if(vTextCom!="" && vIdTopic!=""){
             $.ajax({
