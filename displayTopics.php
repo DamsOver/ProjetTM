@@ -121,9 +121,10 @@
 
             $('#butSubmitTopic').on('click', function() {
                 let vNomTopic = $('#InputNomTopic').val();
-                let vTextTopic = $('#InputTextTopic').val();
+                let vTextTopic = document.getElementById("InputTextTopic").value;
 
-                if(vNomTopic!="" && vTextTopic!="" && vTheme!=""){
+                console.log(vTextTopic);
+                if(vNomTopic!=""&&vTextTopic!=" "&&vTheme!=""){
                     $.ajax({
                         url: "php/saveTopic.php",
                         type: "POST",
@@ -148,11 +149,8 @@
                                     setTimeout(function() { $("#topicAjoute").hide(); }, 5000);
                                 }
                             });
-
-
                         }
                     });
-
                 }
                 else{
                     alert('Please fill all the field !');
