@@ -112,6 +112,7 @@ $(document).ready(function() {
                         },
                         cache: false,
                         success: function(dataResult2){
+                            $('#formComm').find('textarea').eq(0).val('');
                             $('#comsCom').html(dataResult2);
                         }
                     });

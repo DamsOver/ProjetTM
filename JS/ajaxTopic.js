@@ -86,6 +86,8 @@ $(document).ready(function() {
                                     },
                                     cache: false,
                                     success: function(dataResultTopics){
+                                        $('#formDisplayTopic').find('input:text').val('');
+                                        $('#formDisplayTopic').find('textarea').eq(0).val('');
                                         $('#topics').html(dataResultTopics);
                                         $("#topicAjoute").show();
                                         setTimeout(function() { $("#topicAjoute").hide(); }, 5000);
