@@ -38,7 +38,6 @@ $(document).ready(function() {
                 $.ajax({
                     url: "php/getThemes.php",
                     type: "POST",
-                    data: {},
                     cache: false,
                     success: function(dataResult2) {
                         $('#MainListGroupTheme').html(dataResult2);
@@ -46,7 +45,6 @@ $(document).ready(function() {
                             // actualiser la nvabar
                             url: "php/getCategories.php",
                             type: "POST",
-                            data: {},
                             cache: false,
                             success: function(dataResultNavbar) {
                                 $('#elts_cat').html(dataResultNavbar);
@@ -74,7 +72,6 @@ $(document).ready(function() {
                     // actualiser la liste des utilisateurs dans le menu administrateur
                     url: "php/getUsers.php",
                     type: "POST",
-                    data: {},
                     cache: false,
                     success: function(dataResult2){
                         $('#MainListGroupUser').html(dataResult2);
@@ -103,7 +100,6 @@ $(document).ready(function() {
                     $.ajax({
                         url: "php/getThemes.php",
                         type: "POST",
-                        data: {},
                         cache: false,
                         success: function(dataResultThemes) {
                             // actualiser la navbar
@@ -111,7 +107,6 @@ $(document).ready(function() {
                             $.ajax({
                                 url: "php/getCategories.php",
                                 type: "POST",
-                                data: {},
                                 cache: false,
                                 success: function(dataResultNavbar) {
                                     $('#elts_cat').html(dataResultNavbar);
