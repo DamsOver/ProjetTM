@@ -55,7 +55,6 @@
 
         <script src="js/goTopic.js" crossorigin="anonymous"></script>
         <script src="js/goCommentaire.js" crossorigin="anonymous"></script>
-         <?php echo "test"; ?>;
         <script>
         $(document).ready(function() {
             // Search url variable
