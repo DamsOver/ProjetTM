@@ -88,7 +88,7 @@ $(document).ready(function() {
         if(tmpTheme != "") {
             // ajout du thème dans la base de données
             $.ajax({
-                url: "php/ajouterTheme.php",
+                url: "php/saveTheme.php",
                 type: "POST",
                 data: {
                     tmpTheme: tmpTheme,

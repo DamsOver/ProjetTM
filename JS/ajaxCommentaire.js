@@ -16,7 +16,7 @@ $(document).ready(function() {
                     let idCom = e.target.value;
                     // Supprime un commentaire
                     $.ajax({
-                        url: "php/supprCom.php",
+                        url: "php/supprimerCommentaire.php",
                         type: "POST",
                         data: {
                             idCom: idCom

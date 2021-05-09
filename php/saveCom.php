@@ -4,12 +4,11 @@
     }
 
 	include("config.php");
-	$vTextArea=strip_tags($_REQUEST['textCom']);
-	$vIdTopic=$_POST['idTopic'];
+	$vTextArea = strip_tags($_REQUEST['textCom']);
+	$vIdTopic = $_POST['idTopic'];
 	$vMail = $_SESSION['mail'];
 
-	//requéte SQL + mot de passe crypté
-    $requete = $conn->prepare("INSERT into `commentaire` (texte, dateajoutcom, mailCom, idtopic)
+    $requete = $conn -> prepare("INSERT into `commentaire` (texte, dateajoutcom, mailCom, idtopic)
     VALUES (:vTextArea, now(), :vMail, :idTmp)");
 
     //Commentaire
