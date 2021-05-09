@@ -44,11 +44,11 @@ if(isset($_SESSION['grade'])){
 
                 $select .= '<li class="list-group-item ">
                                 <div class="row">
-                                    <div class="col-6 pb-4">
+                                    <div class="col-sm text-truncate pb-4">
                                         ' .$PseudoTmp .'   mail : 
                                         <span>'.$MailTmp.'</span>
                                     </div>
-                                    <div class="col-6 pb-4" id="">
+                                    <div class="col-sm pb-4" id="">
                                         <select class="form-control" id="'.$i1 .'" value ="ok">';
                 if($roleTmp==1){
                     $select.='              <option value="'.$MailTmp.'" selected="selected">Utilisateur</option>
