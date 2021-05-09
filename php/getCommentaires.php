@@ -32,13 +32,13 @@
                 }
             }
 
-            $select .= '<div class="card">
+            $select .= '<div class="card" style="margin-top: 10px;">
                             <div class="card-body">
-                                <div class="card-title">
+                                <div class="card-title" style="background-color: #818182; border-radius: 25px;">
                                     <h3><div class ="pl-3 pt-1 pr-3">' . $PseudoUtilTmp .'</div></h3>
                                 </div>
-                                <div class="card-text">
-                                    <div class ="pl-3 pt-1 pr-3">' . $TxtComTmp .'</div>
+                                <div class="card-text" style="border-radius: 5px; background-color: #d3d9df">
+                                    <div class ="pl-3 pt-1 pr-3" style="background-color: #b9bbbe; border-radius: 5px;">' . $TxtComTmp .'</div>
                                     <footer class="blockquote-footer">
                                         <div class ="pl-3 pt-1 pr-3">' . $DateComTmp .'</div>
                                     </footer>
