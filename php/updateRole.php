@@ -3,9 +3,9 @@
         session_start();
     }
 
-    include "config.php";
-    $vMailUser=$_POST['mailUser'];
-    $vRole=$_POST['role'];
+    include("config.php");
+    $vMailUser = $_POST['mailUser'];
+    $vRole = $_POST['role'];
 
     if($vRole == 'Utilisateur') {
         $vRole = 1;

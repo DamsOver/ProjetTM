@@ -17,7 +17,7 @@
         ?>
 
         <?php
-            require('php/config.php');
+            include('php/config.php');
             if (isset($_REQUEST['user'], $_REQUEST['mail'], $_REQUEST['password'])) {
                 // récupérer l'email et supprimer les antislashes ajoutés par le formulaire
                 $email = stripslashes($_REQUEST['mail']);
@@ -72,38 +72,33 @@
                                 <p>Cliquez ici pour vous <a href='login.php'>connecter</a></p>
                               </div>";
                         } else {
-                            echo "<script>
-                                 alert(\"Problème de connexion avec la bdd\");
-                                 window.location.href = 'register.php';
-                              </script>";
+                            $message = "Problème de connexion avec la bdd.";
                         }
                     } else {
                         if($erreurMotDePasse) {
-                            echo "<script>
-                                alert(\"Les mots de passent doivent correspondre.\");
-                                window.location.href = 'register.php';
-                              </script>";
+                            $message = "Les mots de passes doivent correspondre.";
                         } else {
-                            echo "<script>
-                                alert(\"Veuillez entrer une adresse mail valide.\");
-                                window.location.href = 'register.php';
-                              </script>";
+                            $message = "Veuillez entrer une adresse mail valide.";
                         }
                     }
                 } else {
-                    echo "<p>Vous êtes déjà inscrit.</p>";
+                    $message = "Vous êtes déjà inscrit.";
                 }
-            } else {
+            }
         ?>
-                <form class="box" action="" method="post">
-                    <h1>Inscription</h1>
-                    <input type="text" name="user" placeholder="Nom d'utilisateur" required>
-                    <input type="text" name="mail" placeholder="Adresse e-mail" required>
-                    <input type="password" name="password" placeholder="Mot de passe" required>
-                    <input type="password" name="passwordCheck" placeholder="Confirmer le mot de passe" required>
-                    <input type="submit" name="send" value="S'inscrire">
-                </form>
-        <?php } ?>
+
+        <form class="box" action="" method="post">
+            <h1>Inscription</h1>
+            <input type="text" name="user" placeholder="Nom d'utilisateur" required>
+            <input type="text" name="mail" placeholder="Adresse e-mail" required>
+            <input type="password" name="password" placeholder="Mot de passe" required>
+            <input type="password" name="passwordCheck" placeholder="Confirmer le mot de passe" required>
+            <input type="submit" name="send" value="S'inscrire">
+        </form>
+
+        <?php if (!empty($message)) {
+            echo "<script>alert('$message')</script>";
+        } ?>
 
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="js/jquery-3.4.1.min.js" crossorigin="anonymous"></script>

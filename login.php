@@ -23,7 +23,7 @@
         ?>
 
         <?php
-            require('php/config.php');
+            include('php/config.php');
             if (isset($_POST['user'])){
                 $username = strip_tags($_REQUEST['user']);
                 $password = strip_tags($_REQUEST['password']);
@@ -59,7 +59,7 @@
         </form>
 
         <?php if (!empty($message)) { ?>
-            <p class="errorMessage"><?php echo $message; ?></p>
+            <h1 class="errorMessage" style="text-align: center;"><?php echo $message; ?></h1>
         <?php } ?>
 
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->

@@ -3,7 +3,7 @@
         session_start();
     }
 
-	include "config.php";
+	include("config.php");
 	$vTitreTopic = strip_tags($_REQUEST['nomTopic']);
 	$vTextArea = strip_tags($_REQUEST['textTopic']);
 	$vTheme = $_POST['theme'];

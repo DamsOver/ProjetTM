@@ -3,7 +3,7 @@
         session_start();
     }
 
-	include "config.php";
+	include("config.php");
 	$vTextArea=strip_tags($_REQUEST['textCom']);
 	$vIdTopic=$_POST['idTopic'];
 	$vMail = $_SESSION['mail'];

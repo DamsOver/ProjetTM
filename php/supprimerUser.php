@@ -3,7 +3,7 @@
         session_start();
     }
 
-    include "config.php";
+    include("config.php");
     $vTmpUserMail = $_POST['tmpUserMail'];
 
     $requete = $conn -> prepare("delete from utilisateur where mail = :vTmpUserMail;");
