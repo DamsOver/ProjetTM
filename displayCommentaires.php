@@ -107,6 +107,53 @@
             });
 
             $.ajax({
+                url: "php/getEmail.php",
+                type: "POST",
+                cache: false,
+                success: function(dataResult3){
+                    let vMail = dataResult3;
+
+                        $(document).on('click', '#btnLikeC', function(e) {
+
+                            let vIdCom2 = e.currentTarget.value;
+                            /*console.log(vIdCom2);*/
+                            /*console.log(vMail);
+                            console.log(vIdCom2);*/
+                            if(vMail!="" && vIdCom2!=""){
+
+                                $.ajax({
+                                    url: "php/saveLike.php",
+                                    type: "POST",
+                                    data: {
+                                        mail: vMail,
+                                        idCom: vIdCom2
+                                    },
+                                    cache: false,
+                                    success: function(dataResult){
+
+                                        $.ajax({
+                                            url: "php/getLike.php",
+                                            type: "POST",
+                                            data: {
+                                                mail: vMail,
+                                                idCom: vIdCom2
+                                            },
+                                            cache: false,
+                                            success: function(dataResult){
+                                                 $('.'+vIdCom2).html(dataResult);
+                                            }
+                                        });
+
+                                    }
+                                });
+
+                            }
+                        });
+
+                }
+            });
+
+            $.ajax({
                 url: "php/getCommentaires.php",
                 type: "POST",
                 data: {
@@ -118,6 +165,8 @@
                     $('#comsCom').html(dataResult2);
                 }
             });
+
+
 
             $('#butSubmitCom').on('click', function() {
                 let vTextCom = $('#InputTextCom').val();

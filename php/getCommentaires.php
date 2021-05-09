@@ -42,7 +42,7 @@
                                     <footer class="blockquote-footer">
                                         <div class ="pl-3 pt-1 pr-3">' . $DateComTmp .'</div>
                                     </footer>
-                                    <a href="php/like.php?gIdCom=' . $IdCom . '&gTopic=' . $topic . '&gIdTopic='.$idTopic.'">Likes ' . $NbLikes . '</a>
+                                    <button type="button" name="nBtnLike" id="btnLikeC" value=' . $IdCom . ' href="#">Likes <span class='. $IdCom .'>' . $NbLikes . '</span></button>
                         ';
 
         if(isset($_SESSION['grade'])){

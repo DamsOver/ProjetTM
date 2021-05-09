@@ -2,12 +2,9 @@
     session_start();
 
     include("config.php");
-    $id = (int) $_GET['gIdCom'];
-    $topic = $_GET['gTopic'];
-    $mail = $_SESSION['mail'];
-    $idTopic = $_GET['gIdTopic'];
 
-    /*$idTopic = $_GET['gIdTopic'];*/
+    $id = (int) $_POST['idCom'];
+    $mail = $_POST['mail'];
 
     $requeteVerif = $conn -> prepare("select * from likecom where mailLike = '$mail' and idcom = '$id'");
     $requeteVerif -> execute();
@@ -21,5 +18,4 @@
         $requeteSuppression -> execute();
     }
 
-    header("Location: ../displayCommentaires.php?gTopic=" . $topic . "&gIdTopic=".$idTopic);
 ?>
