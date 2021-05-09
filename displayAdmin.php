@@ -23,8 +23,15 @@ session_start();
         ?>
 
         <?php
+        include("php/adminTitreListe.php");
+        ?>
+
+        <?php
             include("php/getUsers.php");
         ?>
+        </ul>
+        </div>
+        <div class="col-6 pb-4" id="MainListGroupTheme">
         <?php
             include("php/getThemes.php");
         ?>
@@ -34,7 +41,7 @@ session_start();
                 </div>
                 <div class="col-6 pt-04 pb-4" style="color:white;">
                     <?php
-                    include("php/getCatAdmin.php");
+                        include("php/getCatAdmin.php");
                     ?>
                 </div>
             </div>
@@ -44,11 +51,12 @@ session_start();
         <script src="js/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
         <script src="js/popper.min.js" crossorigin="anonymous"></script>
         <script src="js/bootstrap.min.js" crossorigin="anonymous"></script>
+        <script src="js/goTopic.js" crossorigin="anonymous"></script>
 
 
         <script>
             $(document).ready(function() {
-                $('#MainListGroupUser select').on('change', function(e) {
+                $(document).on('click', '#MainListGroupUser select', function(e) {
                     let tmpRole = e.target[e.target.selectedIndex].text;
                     let tmpMailUser =e.target.value;
                     $.ajax({
@@ -61,6 +69,66 @@ session_start();
                         cache: false,
                         success: function(dataResult){
                             console.log(dataResult);
+                        }
+                    });
+                });
+            });
+        </script>
+        <script>
+            $(document).ready(function() {
+                $(document).on('click','#MainListGroupTheme button' , function(e) {
+
+                    let tmpTheme = e.target.value;
+                    $.ajax({
+                        url: "php/SupprTheme.php",
+                        type: "POST",
+                        data: {
+                            tmpTheme: tmpTheme
+                        },
+                        cache: false,
+                        success: function(dataResult){
+
+                            $.ajax({
+                                url: "php/getThemes.php",
+                                type: "POST",
+                                data: {
+                                },
+                                cache: false,
+                                success: function(dataResult2){
+                                    /*var dataResult2 = JSON.parse(dataResult2);*/
+                                    $('#MainListGroupTheme').html(dataResult2);
+                                }
+                            });
+                        }
+                    });
+                });
+            });
+        </script>
+        <script>
+            $(document).ready(function() {
+                $(document).on('click','#MainListGroupUser button' , function(e) {
+
+                    let tmpUserMail = e.target.value;
+                    $.ajax({
+                        url: "php/SupprUser.php",
+                        type: "POST",
+                        data: {
+                            tmpUserMail: tmpUserMail
+                        },
+                        cache: false,
+                        success: function(dataResult){
+
+                            $.ajax({
+                                url: "php/getUsers.php",
+                                type: "POST",
+                                data: {
+                                },
+                                cache: false,
+                                success: function(dataResult2){
+                                    /*var dataResult2 = JSON.parse(dataResult2);*/
+                                    $('#MainListGroupUser').html(dataResult2);
+                                }
+                            });
                         }
                     });
                 });
