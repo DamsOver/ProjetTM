@@ -80,7 +80,7 @@ session_start();
 
                     let tmpTheme = e.target.value;
                     $.ajax({
-                        url: "php/SupprTheme.php",
+                        url: "php/supprTheme.php",
                         type: "POST",
                         data: {
                             tmpTheme: tmpTheme
@@ -110,7 +110,7 @@ session_start();
 
                     let tmpUserMail = e.target.value;
                     $.ajax({
-                        url: "php/SupprUser.php",
+                        url: "php/supprUser.php",
                         type: "POST",
                         data: {
                             tmpUserMail: tmpUserMail
@@ -137,9 +137,8 @@ session_start();
         <script>
             $(document).ready(function() {
                 $(document).on('click','#MainAjout button' , function(e) {
-                    alert("tmpRole");
-                    let tmpRole = e.target[e.target.selectedIndex].text;
-                    alert("tmpRole");
+                    let tmpRole = document.getElementById("nTheme");
+                    alert(tmpRole);
 
                 });
             });

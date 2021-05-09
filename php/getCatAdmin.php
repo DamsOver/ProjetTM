@@ -11,13 +11,13 @@
                         <div class="form-group" id="MainAjout">
                             <label for="InputNomTopic" style="color:white;">Nom du thème</label>
                             <div class="row">
-                                <div class="col-6" style="color:white;">
-                                    <input type="text" name="nTheme" class="form-control" id="InputNomTopic" placeholder="Nom du thème">
+                                <div class="col-6" name="test" style="color:white;">
+                                    <input type="text" id="nTheme" class="form-control" id="InputNomTopic" placeholder="Nom du thème">
                                     </br>
                                     <button type="button" name="ajout" id="ajout" class="btn btn-primary">Ajouter</button>
                                 </div>
                                 <div class="col-6" style="color:white;">
-                                    <select class="form-control" name ="selectCat">';
+                                    <select id="listCat" class="form-control" name ="selectCat">';
 
             $req1 = $conn->prepare("select * from categorie");
             $req1 -> execute();
