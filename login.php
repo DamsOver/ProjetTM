@@ -25,8 +25,8 @@
         <?php
             require('php/config.php');
             if (isset($_POST['user'])){
-                $username = stripslashes($_REQUEST['user']);
-                $password = stripslashes($_REQUEST['password']);
+                $username = strip_tags($_REQUEST['user']);
+                $password = strip_tags($_REQUEST['password']);
 
                 $requete2 = $conn -> prepare("SELECT * FROM utilisateur");
                 $requete2 -> bindValue(':username', $username, PDO::PARAM_STR);
