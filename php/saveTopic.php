@@ -4,8 +4,8 @@
     }
 
 	include "config.php";
-	$vTitreTopic = $_POST['nomTopic'];
-	$vTextArea = $_POST['textTopic'];
+	$vTitreTopic = strip_tags($_REQUEST['nomTopic']);
+	$vTextArea = strip_tags($_REQUEST['textTopic']);
 	$vTheme = $_POST['theme'];
 	$vMail = $_SESSION['mail'];
 

@@ -4,7 +4,7 @@
     }
 
 	include "config.php";
-	$vTextArea=$_POST['textCom'];
+	$vTextArea=strip_tags($_REQUEST['textCom']);
 	$vIdTopic=$_POST['idTopic'];
 	$vMail = $_SESSION['mail'];
 
