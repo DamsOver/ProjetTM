@@ -29,7 +29,7 @@ $(document).ready(function() {
                 $(document).on('click', '#btnDelTopic', function(e) {
                     let idTopic = e.target.value;
                     $.ajax({
-                        url: "php/supprTopic.php",
+                        url: "php/supprimerTopic.php",
                         type: "POST",
                         data: {
                             idTopic: idTopic
