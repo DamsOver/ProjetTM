@@ -34,6 +34,15 @@
                     $inscrire = true;
                     $erreurMotDePasse = false;
                     $regex = '/^[^0-9][_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/';
+                    /* ^[^0-9][_a-z0-9-]+ : l'adresse mail ne peut pas commencer par un chiffre, mais peut contenir
+                                            des minusclues, majuscules, tiret et underscores. Il y aura au moins un caractère.
+                     * (\.[_a-z0-9-]+)*@ : l'adresse mail peut contenir 2 ou + parties séparées par un point avant l'arobase.
+                                            l'arobase est obligatoire.
+                     * [a-z0-9-]+ : le domaine peut contenir des minuscules, chiffres et tirets. Le domaine contient au moins
+                                      un caractère.
+                     * (\.[a-z0-9-]+)* : le domaine peut contenir 2 ou + parties séparées par un point.
+                     * (\.[a-z]{2,3})$ : l'adresse mail se termine par un poit obligatoire, et 2 à 3 lettres minuscules
+                     * */
                     if(!preg_match($regex, $email)) {
                         $inscrire = false;
                     } else if($password != $passwordCheck) {
