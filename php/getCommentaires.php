@@ -1,7 +1,7 @@
 <?php
-    include("php/config.php");
-    $topic = $_GET['gTopic'];
-    $idTopic = $_GET['gIdTopic'];
+    include("config.php");
+    $topic = $_POST['topic'];
+    $idTopic = $_POST['idTopic'];
     $req1 = $conn -> prepare("select commentaire.texte, commentaire.dateajoutcom, utilisateur.pseudo, commentaire.idcom 
                                     from commentaire left join topic using(idtopic) left join utilisateur 
                                     on commentaire.mailcom=utilisateur.mail where idtopic ='$idTopic' order by dateajoutcom");

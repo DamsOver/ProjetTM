@@ -1,6 +1,6 @@
 <?php
     include("config.php");
-    $theme = $_GET['gTheme'];
+    $theme = $_POST['theme'];
     $req1 = $conn->prepare("select idtopic, nomtopic, dateajoutTopic from topic where nomtheme ='$theme'");
     $req1 -> execute();
 

@@ -59,11 +59,7 @@
                         echo $_GET['gTopic'];
                     ?>
                 </div>
-                <div class ="comments" id="comsCom">
-                    <?php
-                        include("php/getCommentaires.php");
-                    ?>
-                </div>
+                <div class ="comments" id="comsCom"></div>
                 <div class="new-comment">
                     <div class="titre h4 ml-1 pt-4 pl-4 pr-4">
                         Votre commentaire :
@@ -92,13 +88,29 @@
 
         <script>
         $(document).ready(function() {
+            // Search url variable
+            let queryString = window.location.search;
+            let urlParams = new URLSearchParams(queryString);
+            let vIdTopic = urlParams.get('gIdTopic');
+            let vTopic = urlParams.get('gTopic');
+            $.ajax({
+                url: "php/getCommentaires.php",
+                type: "POST",
+                data: {
+                    idTopic: vIdTopic,
+                    topic:vTopic
+                },
+                cache: false,
+                success: function(dataResult2){
+                    console.log(dataResult2);
+                    /*var dataResult2 = JSON.parse(dataResult2);*/
+                    $('#comsCom').html(dataResult2);
+                }
+            });
+
             $('#butSubmitCom').on('click', function() {
                 let vTextCom = $('#InputTextCom').val();
-                // Search url variable
-                let queryString = window.location.search;
-                let urlParams = new URLSearchParams(queryString);
-                let vIdTopic = urlParams.get('gIdTopic');
-                let vTopic = urlParams.get('gTopic');
+
 
                 if(vTextCom!="" && vIdTopic!=""){
                     $.ajax({
@@ -111,7 +123,7 @@
                         cache: false,
                         success: function(dataResult){
                             $.ajax({
-                                url: "php/getCommentaires2.php",
+                                url: "php/getCommentaires.php",
                                 type: "POST",
                                 data: {
                                     idTopic: vIdTopic,

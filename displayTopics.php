@@ -2,53 +2,6 @@
     session_start();
 ?>
 
-<?php
-
-            /*require('php/config.php');
-            if (isset($_REQUEST['nTitreTopic'])) {
-
-                //Topic
-                $vTitreTopic = stripslashes($_REQUEST['nTitreTopic']);
-                $vMail = $_SESSION['mail'];
-                $vTheme = $_GET['gTheme'];
-
-                //Commentaire
-                $vTextArea = stripslashes($_REQUEST['nTextArea']);
-
-                //requéte SQL + mot de passe crypté
-                $requete = $conn->prepare("INSERT into `topic` (nomtopic, mailTopic, nomtheme, dateajoutTopic)
-                VALUES (:vTitreTopic, :vMail, :vTheme, now())");
-
-                //Topic
-                $requete -> bindValue(':vTitreTopic', $vTitreTopic, PDO::PARAM_STR);
-                $requete -> bindValue(':vMail', $vMail, PDO::PARAM_STR);
-                $requete -> bindValue(':vTheme', $vTheme, PDO::PARAM_STR);
-                $requete -> execute();
-                $idTmp = $conn->lastInsertId();
-
-                $requete2 = $conn->prepare("INSERT into `commentaire` (texte, dateajoutcom, mailCom, idtopic)
-                VALUES (:vTextArea, now(), :vMail, :idTmp)");
-
-                //Commentaire
-                $requete2 -> bindValue(':vTextArea', $vTextArea, PDO::PARAM_STR);
-                $requete2 -> bindValue(':vMail', $vMail, PDO::PARAM_STR);
-                $requete2 -> bindValue(':idTmp', $idTmp, PDO::PARAM_INT);
-                $requete2 -> execute();
-
-                if($conn != null){
-                     echo "
-                               alert(\"Topic ajouté avec succès\");
-                              ";
-                } else {
-                    echo "
-                               alert(\"Problème de connexion avec la bdd\");
-                              ";
-                }
-
-            }*/
-
-        ?>
-
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -71,11 +24,7 @@
 
         <section id ="mainSection">
             <div class ="grid-wrapper">
-                <div class ="comments" id="coms">
-                    <?php
-                        include("php/getTopics.php");
-                    ?>
-                </div>
+                <div class ="comments" id="coms"></div>
 
                 <div class="new-comment">
                     <div class="titre h4 ml-1 pt-4 pl-4 pr-4">Votre Topic :<span id="topicAjoute" style="background-color:#2abf52;color: white;padding: 5px;margin-left: 10px;border-radius: 10px;display:none;">Topic ajouté</span></div>
@@ -109,13 +58,26 @@
 
         <script>
         $(document).ready(function() {
+            // Search url variable
+                let queryString = window.location.search;
+                let urlParams = new URLSearchParams(queryString);
+                let vTheme = urlParams.get('gTheme');
+             $.ajax({
+                 url: "php/getTopics.php",
+                    type: "POST",
+                    data: {
+                        theme: vTheme
+                    },
+                    cache: false,
+                    success: function(dataResult2){
+                        $('#coms').html(dataResult2);
+                    }
+                });
+
             $('#butSubmitTopic').on('click', function() {
                 let vNomTopic = $('#InputNomTopic').val();
                 let vTextTopic = $('#InputTextTopic').val();
-                // Search url variable
-                let queryString = window.location.search;
-                let urlParams = new URLSearchParams(queryString);
-                let vTheme = urlParams.get('gTheme')
+
                 if(vNomTopic!="" && vTextTopic!="" && vTheme!=""){
                     $.ajax({
                         url: "php/saveTopic.php",
@@ -128,7 +90,7 @@
                         cache: false,
                         success: function(dataResult){
                             $.ajax({
-                                url: "php/getTopics2.php",
+                                url: "php/getTopics.php",
                                 type: "POST",
                                 data: {
                                     theme: vTheme
