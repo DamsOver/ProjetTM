@@ -1,5 +1,5 @@
 <?php
-    if(session_status()===PHP_SESSION_NONE){
+    if(session_status() === PHP_SESSION_NONE){
         session_start();
     }
     include("config.php");
@@ -15,18 +15,18 @@
                 while($data1 = $req1 -> fetch(PDO::FETCH_ASSOC)){
                     $ThemeTmp = $data1['nomtheme'];
                     $select .= '<li class="list-group-item">' .$ThemeTmp .'
-                    <form method ="post" class="form-check-inline" style="float:right;">
-                        <button type="button" style="float:right;" name="suppr" value="'.$ThemeTmp.'"> supprimer </button>
-                    </form>
-                    </li>';
+                                    <form method ="post" class="form-check-inline" style="float:right;">
+                                        <button type="button" style="float:right;" name="suppr" value="'.$ThemeTmp.'"> supprimer </button>
+                                    </form>
+                                </li>';
                 }
             }
         }
 
         $select .= '            </div>
-            </div>
-        </div>
-    </div>';
+                            </div>
+                        </div>
+                    </div>';
 
     echo $select;
     $conn = null;}

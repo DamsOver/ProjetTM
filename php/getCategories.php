@@ -1,5 +1,5 @@
 <?php
-    include("php/config.php");
+    include("config.php");
     $req1 = $conn -> prepare("select * from categorie");
     $req1 -> execute();
 
