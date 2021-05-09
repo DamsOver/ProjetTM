@@ -109,51 +109,56 @@
                                             $('#topics').html(dataResult2);
                                         }
                                     });
-
                                 }
                             });
                         });
-
                     }
-
                 }
             });
 
-            $('#butSubmitTopic').on('click', function() {
-                let vNomTopic = $('#InputNomTopic').val();
-                let vTextTopic = document.getElementById("InputTextTopic").value;
-
-                console.log(vTextTopic);
-                if(vNomTopic!=""&&vTextTopic!=" "&&vTheme!=""){
-                    $.ajax({
-                        url: "php/saveTopic.php",
-                        type: "POST",
-                        data: {
-                            nomTopic: vNomTopic,
-                            textTopic: vTextTopic,
-                            theme: vTheme
-                        },
-                        cache: false,
-                        success: function(dataResult){
-                            $.ajax({
-                                url: "php/getTopics.php",
-                                type: "POST",
-                                data: {
-                                    theme: vTheme
-                                },
-                                cache: false,
-                                success: function(dataResult2){
-                                    /*var dataResult2 = JSON.parse(dataResult2);*/
-                                    $('#topics').html(dataResult2);
-                                    $("#topicAjoute").show();
-                                    setTimeout(function() { $("#topicAjoute").hide(); }, 5000);
-                                }
-                            });
-                        }
-                    });
-                }
-                else{
-                    alert('Please fill all the field !');
+            $.ajax({
+                url: "php/getGrade.php",
+                type: "POST",
+                cache: false,
+                success: function(dataResult3) {
+                    let vGrade = dataResult3;
+                    if(vGrade=='1' || vGrade=='2' || vGrade=='3') {
+                        $('#butSubmitTopic').on('click', function() {
+                            let vNomTopic = $('#InputNomTopic').val();
+                            let vTextTopic = document.getElementById("InputTextTopic").value;
+                            if(vNomTopic!=""&&vTextTopic!=" "&&vTheme!=""){
+                                $.ajax({
+                                    url: "php/saveTopic.php",
+                                    type: "POST",
+                                    data: {
+                                        nomTopic: vNomTopic,
+                                        textTopic: vTextTopic,
+                                        theme: vTheme
+                                    },
+                                    cache: false,
+                                    success: function(dataResult){
+                                        $.ajax({
+                                            url: "php/getTopics.php",
+                                            type: "POST",
+                                            data: {
+                                                theme: vTheme
+                                            },
+                                            cache: false,
+                                            success: function(dataResult2){
+                                                /*var dataResult2 = JSON.parse(dataResult2);*/
+                                                $('#topics').html(dataResult2);
+                                                $("#topicAjoute").show();
+                                                setTimeout(function() { $("#topicAjoute").hide(); }, 5000);
+                                            }
+                                        });
+                                    }
+                                });
+                            }
+                            else{
+                                alert('Please fill all the field !');
+                            }
+                        });
+                    }
                 }
             });
         });
