@@ -25,10 +25,10 @@
                 $requeteVerif -> execute();
                 if($requeteVerif -> rowCount() == 0) {
                     // récupérer le nom d'utilisateur et supprimer les antislashes ajoutés par le formulaire
-                    $username = stripslashes($_REQUEST['user']);
+                    $username = strip_tags($_REQUEST['user']);
                     // récupérer le mot de passe et supprimer les antislashes ajoutés par le formulaire
-                    $password = stripslashes($_REQUEST['password']);
-                    $passwordCheck = stripslashes($_REQUEST['passwordCheck']);
+                    $password = strip_tags($_REQUEST['password']);
+                    $passwordCheck = strip_tags($_REQUEST['passwordCheck']);
 
                     $inscrire = true;
                     $erreurMotDePasse = false;
