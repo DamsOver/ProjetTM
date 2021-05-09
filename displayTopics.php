@@ -46,8 +46,6 @@
             </form>
         </div>
 
-
-
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="js/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
         <script src="js/popper.min.js" crossorigin="anonymous"></script>
@@ -73,11 +71,9 @@
                         $('#coms').html(dataResult2);
                     }
                 });
-
             $('#butSubmitTopic').on('click', function() {
                 let vNomTopic = $('#InputNomTopic').val();
                 let vTextTopic = $('#InputTextTopic').val();
-
                 if(vNomTopic!="" && vTextTopic!="" && vTheme!=""){
                     $.ajax({
                         url: "php/saveTopic.php",
@@ -104,13 +100,8 @@
                                     setTimeout(function() { $("#topicAjoute").hide(); }, 5000);
                                 }
                             });
-
-
                         }
                     });
-
-
-
                 }
                 else{
                     alert('Please fill all the field !');
@@ -118,7 +109,5 @@
             });
         });
         </script>
-
-
     </body>
 </html>

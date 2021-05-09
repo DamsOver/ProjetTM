@@ -11,7 +11,7 @@
                         <div class="form-group" id="MainAjout">
                             <label for="InputNomTopic" style="color:white;">Nom du thème</label>
                             <div class="row">
-                                <div class="col-6" name="test" style="color:white;">
+                                <div class="col-6" style="color:white;">
                                     <input type="text" id="nTheme" class="form-control" id="InputNomTopic" placeholder="Nom du thème">
                                     </br>
                                     <button type="button" name="ajout" id="ajout" class="btn btn-primary">Ajouter</button>
@@ -35,23 +35,6 @@
                         </div>
                     </form>';
         }
-/*
-    if (isset($_POST['ajout'])&&!empty($_POST['nTheme'])) {
-
-        $nomThemeTMP = stripslashes($_REQUEST['nTheme']);
-        $catTMP = stripslashes($_REQUEST['selectCat']);
-
-        echo(" mail " .$mail ."  nomTheme  " .$nomThemeTMP ."  catTMP  " .$catTMP);
-        $req1 = $conn->prepare("INSERT into `theme` (nomtheme, mailTheme, nomcat)
-            VALUES (:nomThemeTMP,:mail,:catTMP)");
-
-        $req1 -> bindValue(':nomThemeTMP', $nomThemeTMP, PDO::PARAM_STR);
-        $req1 -> bindValue(':mail', $mail, PDO::PARAM_STR);
-        $req1 -> bindValue(':catTMP', $catTMP, PDO::PARAM_STR);
-        $req1 -> execute();
-        header("Location: displayAdmin.php");
-    }
-*/
     echo $select;
     }
     $conn = null;
