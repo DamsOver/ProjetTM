@@ -4,7 +4,7 @@ $(document).ready(function() {
     let urlParams = new URLSearchParams(queryString);
     let vIdTopic = urlParams.get('gIdTopic');
     let vTopic = urlParams.get('gTopic');
-
+    // Récupère le grade de l'utilisateur
     $.ajax({
         url: "php/getGrade.php",
         type: "POST",
@@ -14,6 +14,7 @@ $(document).ready(function() {
             if(vGrade=='2' || vGrade=='3') {
                 $(document).on('click', '#btnDelCom', function(e) {
                     let idCom = e.target.value;
+                    // Supprime un commentaire
                     $.ajax({
                         url: "php/supprCom.php",
                         type: "POST",
@@ -22,6 +23,7 @@ $(document).ready(function() {
                         },
                         cache: false,
                         success: function(dataResult){
+                            // Actualise les commentaires après suppression
                             $.ajax({
                                 url: "php/getCommentaires.php",
                                 type: "POST",
@@ -50,6 +52,7 @@ $(document).ready(function() {
             $(document).on('click', '#btnLikeC', function(e) {
                 let vIdCom2 = e.currentTarget.value;
                 if(vMail!="" && vIdCom2!=""){
+                    // Enregistre le like dans la bdd
                     $.ajax({
                         url: "php/saveLike.php",
                         type: "POST",
@@ -59,6 +62,7 @@ $(document).ready(function() {
                         },
                         cache: false,
                         success: function(dataResult){
+                            // Actualise les like au clique sur le bouton like
                             $.ajax({
                                 url: "php/getLike.php",
                                 type: "POST",
@@ -78,6 +82,7 @@ $(document).ready(function() {
         }
     });
 
+    // Actualise les commentaires au chargement de la page
     $.ajax({
         url: "php/getCommentaires.php",
         type: "POST",
@@ -94,6 +99,7 @@ $(document).ready(function() {
     $(document).on('click', '#butSubmitCom', function(e) {
         let vTextCom = $('#InputTextCom').val();
         if(vTextCom!="" && vIdTopic!=""){
+            // Enregistre le commentaire dans la bdd pour l'ajout
             $.ajax({
                 url: "php/saveCom.php",
                 type: "POST",
@@ -103,6 +109,7 @@ $(document).ready(function() {
                 },
                 cache: false,
                 success: function(dataResult){
+                    // Actualise les commentaires après ajout
                     $.ajax({
                         url: "php/getCommentaires.php",
                         type: "POST",

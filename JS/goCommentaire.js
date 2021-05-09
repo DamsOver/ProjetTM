@@ -1,3 +1,4 @@
+//Evenement lors du clic sur un Topic
 $(document).on('click', '.row .card .card-body a', function(e) {
     let tmpTopic = e.target.textContent;
     let tmpIdTopic = e.target.id;

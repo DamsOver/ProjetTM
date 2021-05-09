@@ -4,8 +4,8 @@ $(document).ready(function() {
         // on récupère le rôle choisi
         let tmpRole = e.target[e.target.selectedIndex].text;
         let tmpMailUser = e.target.value;
+        // Change le rôle dans la base de donnee
         $.ajax({
-            // fichier pour changer le rôle dans la base de donner
             url: "php/updateRole.php",
             type: "POST",
             // envoyer les données nécessaires à updateRole.php via la méthode post
@@ -41,8 +41,8 @@ $(document).ready(function() {
                     cache: false,
                     success: function(dataResult2) {
                         $('#MainListGroupTheme').html(dataResult2);
+                        // actualise les categories
                         $.ajax({
-                            // actualiser la nvabar
                             url: "php/getCategories.php",
                             type: "POST",
                             cache: false,
@@ -59,8 +59,8 @@ $(document).ready(function() {
     // supprimer un utilisateur
     $(document).on('click','#MainListGroupUser button' , function(e) {
         let tmpUserMail = e.target.value;
+        // supprimer l'utilisateur dans la base de données
         $.ajax({
-            // supprimer l'utilisateur dans la base de données
             url: "php/supprimerUser.php",
             type: "POST",
             data: {
@@ -68,8 +68,8 @@ $(document).ready(function() {
             },
             cache: false,
             success: function(dataResult) {
+                // actualiser la liste des utilisateurs dans le menu administrateur
                 $.ajax({
-                    // actualiser la liste des utilisateurs dans le menu administrateur
                     url: "php/getUsers.php",
                     type: "POST",
                     cache: false,
@@ -86,8 +86,8 @@ $(document).ready(function() {
         let tmpTheme = document.getElementById("nTheme").value;
         let tmpCategorie = document.getElementById("listCat")[document.getElementById("listCat").selectedIndex].text;
         if(tmpTheme != "") {
+            // ajout du thème dans la base de données
             $.ajax({
-                // ajout du thème dans la base de données
                 url: "php/ajouterTheme.php",
                 type: "POST",
                 data: {
@@ -102,8 +102,8 @@ $(document).ready(function() {
                         type: "POST",
                         cache: false,
                         success: function(dataResultThemes) {
-                            // actualiser la navbar
                             $('#MainListGroupTheme').html(dataResultThemes);
+                            // actualiser la navbar
                             $.ajax({
                                 url: "php/getCategories.php",
                                 type: "POST",
