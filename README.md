@@ -1,8 +1,8 @@
 # ProjetTM
 
 Site internet réalisé dans le cadre d'un examen de technologie mobile.
-Le but était de réaliser un forum où plusieurs utilisateurs inscrits pourraient converser sur divers sujets.
-Pour discuter les utilisateurs peuvent créer un topic dans les catégories créées par les modérateurs/administrateurs.
+Le but était de réaliser un forum où des utilisateurs inscrits pourraient converser et poser des questions sur divers sujets.
+Pour discuter, les utilisateurs crée un topic dans l'une des catégories définies par les modérateurs/administrateurs.
 
 Technologies utilisées : HTML/JS/Css, Php, MySql. (JS : jQuery, Bootstrap).
 
