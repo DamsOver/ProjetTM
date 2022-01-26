@@ -1,4 +1,4 @@
-# pro-grammer | Projet scolaire | [FR]
+# Pro-grammer | Projet scolaire | [FR]
 
 ## Informations
 
