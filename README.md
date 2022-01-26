@@ -1,4 +1,4 @@
-# ProjetTM | Projet scolaire | [FR]
+# pro-grammer | Projet scolaire | [FR]
 
 ## Informations
 
