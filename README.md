@@ -20,3 +20,7 @@ Pour discuter, les utilisateurs créent un topic dans l'une des catégories déf
 
 ## Images de présentation :
 
+
+
+<div>
+<img align=top src="https://github.com/damien-auversack/ProjetTM/blob/master/presentation_pictures/picture_01.jpg" width="700px"></div>
